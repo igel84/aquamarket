@@ -11,6 +11,7 @@ gem 'cancan'
 gem 'gritter_notices'
 gem 'awesome_nested_set'
 gem 'haml-rails'
+gem 'globalize3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
