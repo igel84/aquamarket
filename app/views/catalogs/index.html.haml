@@ -1,0 +1,4 @@
+%h1 Каталог
+%ul
+  - @catalogue_sections.try(:each) do |section|
+    %li= section.name
