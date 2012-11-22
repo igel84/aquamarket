@@ -16,10 +16,26 @@ RailsAdmin.config do |config|
       configure :article_translations, :has_many_association
       configure :id, :integer 
       configure :title, :string
+      configure :body, :text
       configure :created_at, :datetime 
       configure :updated_at, :datetime 
-      list do; end
+      list do
+        field :title
+        field :article_translations
+      end
       show do; end
+      create do
+        field :title do
+          length do
+            255
+          end
+        end
+        field :body do
+          ckeditor do 
+            true
+          end
+        end
+      end
       edit do
         field :title
         field :article_translations
