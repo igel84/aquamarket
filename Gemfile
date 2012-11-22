@@ -5,13 +5,20 @@ gem 'mysql2'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'rails_admin'
-gem 'ckeditor'
+gem 'ckeditor', '3.7.3'
 gem 'devise'
 gem 'cancan'
 gem 'gritter_notices'
 gem 'awesome_nested_set'
 gem 'haml-rails'
 gem 'globalize3'
+gem 'yaml_db', github: 'lostapathy/yaml_db'
+
+group :development do
+  gem 'rb-readline' # for console
+  gem 'letter_opener'
+  gem 'thin'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -25,9 +32,6 @@ gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'

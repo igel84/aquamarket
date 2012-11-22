@@ -1,0 +1,28 @@
+#runtime Assert as in all other languages
+def _ASSERT(condition, msg = nil)
+  unless condition
+    raise "Runtime Error at #{caller.first.sub(Rails.root.to_s, '<root>')}: #{msg}"
+  end
+end
+
+# Делает компиляцию ассетов более итеративной
+if defined?(Sprockets)
+  module Sprockets
+    class StaticCompiler
+      cattr_accessor :processed
+      self.processed = 0
+
+      def write_asset_with_logging(asset)
+        if (self.class.processed += 1)%5 == 0
+          puts "PROCESSED ASSETS: #{self.class.processed}"
+        end
+        write_asset_without_logging(asset)
+      end
+      alias_method_chain :write_asset, :logging
+    end
+  end
+end
+
+class ActiveRecord::Base
+  attr_protected :created_at, :updated_at
+end
