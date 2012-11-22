@@ -64,4 +64,44 @@ RailsAdmin.config do |config|
       export do; end
    end
 
+  config.model 'CatalogueSection' do
+      configure :catalogue_section_translations, :has_many_association
+      configure :id, :integer 
+      configure :name, :string
+      configure :created_at, :datetime 
+      configure :updated_at, :datetime 
+      list do
+        field :name
+        field :catalogue_section_translations
+      end
+      show do; end
+      edit do
+        field :name
+        field :catalogue_section_translations
+      end
+      export do; end
+  end
+
+  config.model 'CatalogueSectionTranslation' do
+      configure :catalogue_section, :belongs_to_association 
+      configure :id, :integer 
+      configure :catalogue_section_id, :integer
+      configure :locale, :enum 
+      configure :name, :string 
+      configure :created_at, :datetime 
+      configure :updated_at, :datetime 
+      list do
+        field :locale
+        field :name
+        field :catalogue_section
+      end
+      show do; end
+      edit do
+        field :catalogue_section
+        field :locale
+        field :name
+      end
+      export do; end
+   end
+
 end

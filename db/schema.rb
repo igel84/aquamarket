@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122105204) do
+ActiveRecord::Schema.define(:version => 20121122145224) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -26,6 +26,22 @@ ActiveRecord::Schema.define(:version => 20121122105204) do
   add_index "article_translations", ["locale"], :name => "index_article_translations_on_locale"
 
   create_table "articles", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "catalogue_section_translations", :force => true do |t|
+    t.integer  "catalogue_section_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "catalogue_section_translations", ["catalogue_section_id"], :name => "index_b6e872666f9568af94f09a51977fcff7980683d6"
+  add_index "catalogue_section_translations", ["locale"], :name => "index_catalogue_section_translations_on_locale"
+
+  create_table "catalogue_sections", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
