@@ -24,20 +24,13 @@ RailsAdmin.config do |config|
         field :article_translations
       end
       show do; end
-      create do
-        field :title do
-          length do
-            255
-          end
-        end
+      edit do
+        field :title
         field :body do
           ckeditor do 
             true
           end
         end
-      end
-      edit do
-        field :title
         field :article_translations
       end
       export do; end
