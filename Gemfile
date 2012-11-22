@@ -12,6 +12,7 @@ gem 'gritter_notices'
 gem 'awesome_nested_set'
 gem 'haml-rails'
 gem 'globalize3'
+gem 'yaml_db', github: 'lostapathy/yaml_db'
 
 group :development do
   gem 'rb-readline' # for console
