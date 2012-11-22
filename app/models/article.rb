@@ -1,5 +1,9 @@
 class Article < ActiveRecord::Base
- attr_accessible :title, :body
+ attr_accessible :title, :body, :locale
  translates :title, :body
- accepts_nested_attributes_for :translations
+
+ class Translation
+   attr_accessible :locale
+ end
+
 end
