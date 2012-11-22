@@ -25,11 +25,15 @@ RailsAdmin.config do |config|
   config.model 'Article' do
       configure :article_translations, :has_many_association
       configure :id, :integer 
+      configure :title, :string
       configure :created_at, :datetime 
       configure :updated_at, :datetime 
       list do; end
       show do; end
-      edit do; end
+      edit do
+        field :title
+        field :article_translations
+      end
       export do; end
   end
 
