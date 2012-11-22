@@ -1,4 +1,4 @@
 %h1 Каталог
 %ul
   - @catalogue_sections.try(:each) do |section|
-    %li= section.name
+    %li= link_to section.name, catalog_path(current_locale, section)

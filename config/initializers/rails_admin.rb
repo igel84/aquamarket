@@ -83,25 +83,84 @@ RailsAdmin.config do |config|
   end
 
   config.model 'CatalogueSectionTranslation' do
-      configure :catalogue_section, :belongs_to_association 
-      configure :id, :integer 
-      configure :catalogue_section_id, :integer
-      configure :locale, :enum 
-      configure :name, :string 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime 
-      list do
-        field :locale
-        field :name
-        field :catalogue_section
-      end
-      show do; end
-      edit do
-        field :catalogue_section
-        field :locale
-        field :name
-      end
-      export do; end
+     configure :catalogue_section, :belongs_to_association 
+     configure :id, :integer 
+     configure :catalogue_section_id, :integer
+     configure :locale, :enum 
+     configure :name, :string 
+     configure :created_at, :datetime 
+     configure :updated_at, :datetime 
+     list do
+       field :locale
+       field :name
+       field :catalogue_section
+     end
+     show do; end
+     edit do
+       field :catalogue_section
+       field :locale
+       field :name
+     end
+     export do; end
    end
+
+  config.model 'Product' do
+    configure :product_translations, :has_many_association
+    configure :catalogue_section, :belongs_to_association
+    configure :id, :integer 
+    configure :name, :string
+    configure :preview, :text
+    configure :description, :text
+    configure :price, :decimal
+    configure :discount_price, :decimal
+    configure :quantity, :integer
+    configure :created_at, :datetime 
+    configure :updated_at, :datetime 
+    list do
+      field :name
+      field :product_translations
+      field :catalogue_section
+    end
+    show do; end
+    edit do
+      field :catalogue_section
+      field :name
+      field :price
+      field :discount_price
+      field :preview
+      field :description do
+        ckeditor do 
+          true
+        end
+      end
+      field :product_translations
+    end
+    export do; end
+  end
+
+  config.model 'ProductTranslation' do
+    configure :product, :belongs_to_association 
+    configure :id, :integer 
+    configure :product_id, :integer
+    configure :locale, :enum 
+    configure :name, :string 
+    configure :preview, :text 
+    configure :desctiption, :text
+    configure :created_at, :datetime 
+    configure :updated_at, :datetime 
+    list do
+      field :locale
+      field :name
+      field :product
+    end
+    show do; end
+    edit do
+      field :locale
+      field :name
+      field :preview
+      field :description
+    end
+    export do; end
+  end
 
 end

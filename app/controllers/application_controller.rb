@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :define_locale
+  before_filter :current_locale
+  helper_method :current_locale
 
-  def define_locale
-    I18n.locale = params[:locale].try(:to_sym) || I18n.default_locale
+  def current_locale
+   @locale ||= I18n.locale = params[:locale] || I18n.default_locale
   end
 end
