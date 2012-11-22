@@ -5,13 +5,18 @@ gem 'mysql2'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'rails_admin'
-gem 'ckeditor'
+gem 'ckeditor', '3.7.3'
 gem 'devise'
 gem 'cancan'
 gem 'gritter_notices'
 gem 'awesome_nested_set'
 gem 'haml-rails'
 gem 'globalize3'
+
+group :development do
+  gem 'rb-readline' # for console
+  gem 'letter_opener'
+end
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
