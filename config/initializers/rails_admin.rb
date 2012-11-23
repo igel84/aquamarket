@@ -108,6 +108,7 @@ RailsAdmin.config do |config|
 
   config.model 'Product' do
     configure :product_translations, :has_many_association
+    configure :product_images, :has_many_association
     configure :catalogue_section, :belongs_to_association
     configure :id, :integer 
     configure :art, :string
@@ -124,6 +125,7 @@ RailsAdmin.config do |config|
       field :name
       field :product_translations
       field :catalogue_section
+      field :product_images
     end
     show do; end
     edit do
@@ -147,6 +149,7 @@ RailsAdmin.config do |config|
           true
         end
       end
+      field :product_images
       field :product_translations
     end
     export do; end
@@ -179,6 +182,24 @@ RailsAdmin.config do |config|
       end
     end
     export do; end
+  end
+
+  config.model 'ProductImage' do
+      configure :product, :belongs_to_association
+      configure :id, :integer 
+      configure :image, :carrierwave
+      configure :created_at, :datetime 
+      configure :updated_at, :datetime 
+      list do
+        field :image
+        field :product
+      end
+      show do; end
+      edit do
+        field :product
+        field :image
+      end
+      export do; end
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123040125) do
+ActiveRecord::Schema.define(:version => 20121123051849) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -73,6 +73,13 @@ ActiveRecord::Schema.define(:version => 20121123040125) do
   end
 
   add_index "gritter_notices", ["owner_id", "delivered_at"], :name => "index_gritter_notices_on_owner_id_and_delivered_at"
+
+  create_table "product_images", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "product_translations", :force => true do |t|
     t.integer  "product_id"
