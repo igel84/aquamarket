@@ -6,7 +6,10 @@ Golf::Application.routes.draw do
 
   scope "(:locale)", locale: /en|ru/ do
     root to: 'catalogs#index'
-    resources :catalogs
+    resources :articles
+    resources :catalogs do
+      resources :products
+    end
   end
 
 end

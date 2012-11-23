@@ -1,2 +1,6 @@
-%h1 Catalog#show
-%p Find me in app/views/catalog/show.html.haml
+%h1= @catalogue_section.name
+%ul
+  - @catalogue_section.products.try(:each) do |product|
+    %li
+      = image_tag(product.product_images.first.image.small) if product.product_images.first.image?
+      = link_to product.name, catalog_product_path(current_locale, @catalogue_section, product)
