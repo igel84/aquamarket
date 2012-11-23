@@ -66,6 +66,7 @@ RailsAdmin.config do |config|
 
   config.model 'CatalogueSection' do
       configure :catalogue_section_translations, :has_many_association
+      configure :products, :has_many_association
       configure :id, :integer 
       configure :name, :string
       configure :created_at, :datetime 
@@ -78,6 +79,7 @@ RailsAdmin.config do |config|
       edit do
         field :name
         field :catalogue_section_translations
+        field :products
       end
       export do; end
   end
@@ -127,6 +129,7 @@ RailsAdmin.config do |config|
       field :name
       field :price
       field :discount_price
+      field :quantity
       field :preview
       field :description do
         ckeditor do 

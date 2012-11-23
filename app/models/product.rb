@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :product_id, :catalogue_section_id, :name, :preview, :description, :price, :discount_price, :product_translations_attributes
+  attr_accessible :product_id, :catalogue_section_id, :name, :preview, :description, :price, :discount_price, :quantity, :product_translations_attributes
   translates :name, :preview, :description do
     validates :name, presence: true
   end
