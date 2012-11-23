@@ -1,6 +1,6 @@
 class ProductTranslation < ActiveRecord::Base
  
- validates_presence_of :title
+ validates_presence_of :name
  validates :locale, uniqueness: { scope: :product_id }
  attr_accessible :art, :name, :preview, :description, :price, :locale#, :product_id
  belongs_to :product
