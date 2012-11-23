@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123051849) do
+ActiveRecord::Schema.define(:version => 20121123102355) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -74,6 +74,23 @@ ActiveRecord::Schema.define(:version => 20121123051849) do
 
   add_index "gritter_notices", ["owner_id", "delivered_at"], :name => "index_gritter_notices_on_owner_id_and_delivered_at"
 
+  create_table "product_attribute_translations", :force => true do |t|
+    t.integer  "product_attribute_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "product_attribute_translations", ["locale"], :name => "index_product_attribute_translations_on_locale"
+  add_index "product_attribute_translations", ["product_attribute_id"], :name => "index_794d67e3f767e4884c1d2d024fc265d1109a9033"
+
+  create_table "product_attributes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "product_images", :force => true do |t|
     t.integer  "product_id"
     t.string   "image"
@@ -102,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20121123051849) do
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
     t.string   "art"
+    t.text     "product_attributes"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

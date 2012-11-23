@@ -109,6 +109,7 @@ RailsAdmin.config do |config|
   config.model 'Product' do
     configure :product_translations, :has_many_association
     configure :product_images, :has_many_association
+    configure :product_attributes, :has_many_association
     configure :catalogue_section, :belongs_to_association
     configure :id, :integer 
     configure :art, :string
@@ -200,6 +201,49 @@ RailsAdmin.config do |config|
         field :image
       end
       export do; end
+  end
+
+  config.model 'ProductAttribute' do
+    configure :product_attribute_translations, :has_many_association
+    configure :id, :integer 
+    configure :name, :string
+    configure :created_at, :datetime 
+    configure :updated_at, :datetime 
+    list do
+      field :name
+      field :product_attribute_translations
+    end
+    show do; end
+    edit do
+      field :name do
+        length do
+          255
+        end
+      end
+      field :product_attribute_translations
+    end
+    export do; end
+  end
+
+  config.model 'ProductAttributeTranslation' do
+    configure :product_attribute, :belongs_to_association 
+    configure :id, :integer 
+    configure :product_attribute_id, :integer
+    configure :locale, :enum 
+    configure :name, :string 
+    configure :created_at, :datetime 
+    configure :updated_at, :datetime 
+    list do
+      field :locale
+      field :name
+      field :product_attribute
+    end
+    show do; end
+    edit do
+      field :locale
+      field :name
+    end
+    export do; end
   end
 
 end
