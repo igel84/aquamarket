@@ -109,7 +109,11 @@ RailsAdmin.config do |config|
   config.model 'Product' do
     configure :product_translations, :has_many_association
     configure :product_images, :has_many_association
-    configure :product_attributes, :has_many_association
+    configure :product_attributes, :enum do
+      render do
+        product[:product_attributes].select('name', product[:id].product_attributes_enum, {}, { multiple: true })
+      end
+    end
     configure :catalogue_section, :belongs_to_association
     configure :id, :integer 
     configure :art, :string
@@ -151,6 +155,7 @@ RailsAdmin.config do |config|
         end
       end
       field :product_images
+      field :product_attributes
       field :product_translations
     end
     export do; end

@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :product_id, :catalogue_section_id, :art, :name, :preview, :description, :price, :discount_price, :quantity, :product_translations_attributes, :product_images_attributes, :product_attributes_attributes
+  attr_accessible :product_id, :catalogue_section_id, :art, :name, :preview, :description, :price, :discount_price, :quantity, :product_translations_attributes, :product_images_attributes, :product_attributes
   translates :name, :preview, :description do
     validates :name, presence: true
   end
@@ -15,4 +15,9 @@ class Product < ActiveRecord::Base
   class Translation
     attr_accessible :locale
   end
+
+  def product_attributes_enum
+    @product_attributes = ProductAttribute.all.map{|attr| [attr.name, attr.id]}
+  end 
+
 end
