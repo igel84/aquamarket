@@ -5,19 +5,18 @@ class Product < ActiveRecord::Base
   end
   has_many :product_translations, dependent: :destroy
   has_many :product_images, dependent: :destroy
-  has_many :product_attributes, dependent: :destroy
   belongs_to :catalogue_section
   accepts_nested_attributes_for :product_translations, allow_destroy: true
   accepts_nested_attributes_for :product_images, allow_destroy: true
-  accepts_nested_attributes_for :product_attributes, allow_destroy: true
   validates :catalogue_section_id, presence: true
+  serialize :product_attributes, Array
 
   class Translation
     attr_accessible :locale
   end
 
   def product_attributes_enum
-    @product_attributes = ProductAttribute.all.map{|attr| [attr.name, attr.id]}
+    ProductAttribute.all.collect{|attr| [attr.name, attr.id]}
   end 
-
+  
 end
