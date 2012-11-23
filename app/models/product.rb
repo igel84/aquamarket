@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+
   attr_accessible :product_id, :catalogue_section_id, :art, :name, :preview, :description, :price, :discount_price, :quantity, :product_translations_attributes, :product_images_attributes, :product_attributes
   translates :name, :preview, :description do
     validates :name, presence: true
@@ -16,7 +17,12 @@ class Product < ActiveRecord::Base
   end
 
   def product_attributes_enum
-    ProductAttribute.all.collect{|attr| [attr.name, attr.id]}
+    ProductAttribute.all.collect{ |attr| [attr.name, attr.id] }
   end 
+
+  def additional_attributes
+    product_attributes.delete_at 0
+    ProductAttribute.find(product_attributes.uniq)
+  end
   
 end
