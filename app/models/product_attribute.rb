@@ -1,6 +1,6 @@
 class ProductAttribute < ActiveRecord::Base
 
-  attr_accessible :name, :product_attribute_translations_attributes
+  attr_accessible :name, :value, :product_attribute_translations_attributes
   translates :name do
     validates :name, presence: true
   end

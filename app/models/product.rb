@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   end
 
   def product_attributes_enum
-    ProductAttribute.all.collect{ |attr| [attr.name, attr.id] }
+    ProductAttribute.all.collect{ |attr| ["#{attr.name}: #{attr.value}", attr.id] }
   end 
 
   def additional_attributes

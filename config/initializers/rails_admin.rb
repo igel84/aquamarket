@@ -208,10 +208,12 @@ RailsAdmin.config do |config|
     configure :product_attribute_translations, :has_many_association
     configure :id, :integer 
     configure :name, :string
+    configure :value, :string
     configure :created_at, :datetime 
     configure :updated_at, :datetime 
     list do
       field :name
+      field :value
       field :product_attribute_translations
     end
     show do; end
@@ -221,6 +223,7 @@ RailsAdmin.config do |config|
           255
         end
       end
+      field :value
       field :product_attribute_translations
     end
     export do; end
