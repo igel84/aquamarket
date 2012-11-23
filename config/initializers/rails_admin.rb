@@ -110,6 +110,7 @@ RailsAdmin.config do |config|
     configure :product_translations, :has_many_association
     configure :catalogue_section, :belongs_to_association
     configure :id, :integer 
+    configure :art, :string
     configure :name, :string
     configure :preview, :text
     configure :description, :text
@@ -119,6 +120,7 @@ RailsAdmin.config do |config|
     configure :created_at, :datetime 
     configure :updated_at, :datetime 
     list do
+      field :art
       field :name
       field :product_translations
       field :catalogue_section
@@ -126,7 +128,16 @@ RailsAdmin.config do |config|
     show do; end
     edit do
       field :catalogue_section
-      field :name
+      field :art do
+        length do
+          255
+        end
+      end
+      field :name do
+        length do
+          255
+        end
+      end
       field :price
       field :discount_price
       field :quantity
@@ -161,7 +172,11 @@ RailsAdmin.config do |config|
       field :locale
       field :name
       field :preview
-      field :description
+      field :description do
+        ckeditor do 
+          true
+        end
+      end
     end
     export do; end
   end

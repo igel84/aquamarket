@@ -11,5 +11,5 @@ class CatalogueSection < ActiveRecord::Base
   class Translation
     attr_accessible :locale
   end
-
+  
 end
