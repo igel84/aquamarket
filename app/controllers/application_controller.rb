@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   def current_locale
    @locale ||= I18n.locale = params[:locale] || I18n.default_locale
   end
+
+  private
+    
+    def current_cart
+    end
+
 end
