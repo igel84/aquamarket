@@ -52,7 +52,9 @@ RailsAdmin.config do |config|
       end
       show do; end
       edit do
-        field :article
+        field :article do
+          hide
+        end
         field :locale
         field :title
         field :body do
@@ -99,7 +101,9 @@ RailsAdmin.config do |config|
      end
      show do; end
      edit do
-       field :catalogue_section
+       field :catalogue_section do
+         hide
+       end
        field :locale
        field :name
      end
@@ -198,7 +202,9 @@ RailsAdmin.config do |config|
       end
       show do; end
       edit do
-        field :product
+        field :product do
+          hide
+        end
         field :image
       end
       export do; end
