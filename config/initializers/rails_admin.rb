@@ -256,4 +256,55 @@ RailsAdmin.config do |config|
     export do; end
   end
 
+  config.model 'MenuItem' do
+    configure :menu_items, :has_many_association
+    configure :id, :integer 
+    configure :parent_id, :integer
+    configure :lft, :integer
+    configure :rgt, :integer
+    configure :depth, :integer
+    configure :name, :string
+    configure :url, :string
+    configure :created_at, :datetime 
+    configure :updated_at, :datetime 
+    list do
+      field :name
+      field :url
+      field :menu_item_translations
+    end
+    show do; end
+    edit do
+      field :name do
+        length do
+          255
+        end
+      end
+      field :name
+      field :url
+      field :menu_item_translations
+    end
+    export do; end
+  end
+
+  config.model 'MenuItemTranslation' do
+    configure :menu_item, :belongs_to_association 
+    configure :id, :integer 
+    configure :menu_item_id, :integer
+    configure :locale, :enum 
+    configure :name, :string 
+    configure :created_at, :datetime 
+    configure :updated_at, :datetime 
+    list do
+      field :locale
+      field :name
+      field :product_attribute
+    end
+    show do; end
+    edit do
+      field :locale
+      field :name
+    end
+    export do; end
+  end
+
 end

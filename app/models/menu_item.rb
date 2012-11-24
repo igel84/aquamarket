@@ -1,5 +1,5 @@
 class MenuItem < ActiveRecord::Base
-  attr_accessible :depth, :lft, :parent_id, :rgt, :url, :menu_item_translations_attributes
+  attr_accessible :name, :depth, :lft, :parent_id, :rgt, :url, :menu_item_translations_attributes
   translates :name do
     validates :name, presence: true
   end
