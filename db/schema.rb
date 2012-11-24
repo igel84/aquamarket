@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123175237) do
+ActiveRecord::Schema.define(:version => 20121124105918) do
 
   create_table "article_translations", :force => true do |t|
     t.integer  "article_id"
@@ -73,6 +73,27 @@ ActiveRecord::Schema.define(:version => 20121123175237) do
   end
 
   add_index "gritter_notices", ["owner_id", "delivered_at"], :name => "index_gritter_notices_on_owner_id_and_delivered_at"
+
+  create_table "menu_item_translations", :force => true do |t|
+    t.integer  "menu_item_id"
+    t.string   "locale"
+    t.string   "name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "menu_item_translations", ["locale"], :name => "index_menu_item_translations_on_locale"
+  add_index "menu_item_translations", ["menu_item_id"], :name => "index_menu_item_translations_on_menu_item_id"
+
+  create_table "menu_items", :force => true do |t|
+    t.string   "url"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "product_attribute_translations", :force => true do |t|
     t.integer  "product_attribute_id"

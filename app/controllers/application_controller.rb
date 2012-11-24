@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :current_locale
+  before_filter :current_locale, :find_cart
   helper_method :current_locale
 
   def current_locale
@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    
-    def current_cart
+
+    def find_cart
+      session[:cart] ||= Cart.new
     end
 
 end
