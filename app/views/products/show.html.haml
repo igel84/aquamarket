@@ -1,6 +1,14 @@
 %h1= @product.name
 %p!= @product.description
 %p
+  = link_to t(:root_title), root_path
+  \/
+  = link_to t(:catalog_title), catalogs_path(@locale)
+  \/
+  = link_to @product.catalogue_section.name, catalog_path(@locale, @product.catalogue_section)
+  \/
+  = @product.name
+%p
   - @product.product_images.each do |photo|
     = link_to image_tag(photo.image.small), photo.image.medium.url
 %p
