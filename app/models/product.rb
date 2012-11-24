@@ -17,11 +17,11 @@ class Product < ActiveRecord::Base
   end
 
   def product_attributes_enum
-    ProductAttribute.all.collect{ |attr| ["#{attr.name}: #{attr.value}", attr.id] }
+    ProductAttribute.all.collect { |attr| ["#{attr.name}: #{attr.value}", attr.id] }
   end 
 
   def additional_attributes
-    product_attributes.delete_at 0
+    product_attributes.delete_if { |i| i == '' }
     ProductAttribute.find(product_attributes.uniq)
   end
   
