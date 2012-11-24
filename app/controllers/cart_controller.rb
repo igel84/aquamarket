@@ -1,9 +1,10 @@
 class CartController < ApplicationController
 
-  def add_to_cart(product, quantity)
+  def add_to_cart(product=params[:cart_item][:product_id], quantity=params[:quantity])
     @cart = find_cart
-    product = Product.find params[:id]
-    @cart.add_product(product, quantity)
+    @product = Product.find product
+    @cart.add_product(@product, quantity)
+    redirect_to :back
   end
 
 end

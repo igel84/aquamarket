@@ -4,6 +4,8 @@ Golf::Application.routes.draw do
   devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
 
+  post '/cart/add_to_cart', controller: :cart, action: :add_to_cart, as: 'add_to_cart'
+
   scope "(:locale)", locale: /en|ru/ do
     root to: 'catalogs#index'
     resources :articles
