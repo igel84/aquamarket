@@ -21,7 +21,7 @@ class Product < ActiveRecord::Base
   end 
 
   def additional_attributes
-    product_attributes.delete_if { |i| i == '' }
+    product_attributes.delete_if { |i| i.empty? }
     ProductAttribute.find(product_attributes.uniq)
   end
   
