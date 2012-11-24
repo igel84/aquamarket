@@ -8,7 +8,7 @@ class Cart
   def add_product(product, quantity)
     current_item = @items.find { |item| item.product == product }
     if current_item
-      current_item.increment_quantity quantity
+      current_item.increment_quantity(quantity)
     else
       @items << CartItem.new(product, quantity)
     end

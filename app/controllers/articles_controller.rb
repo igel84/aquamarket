@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
   def show
-    @article = Article.find params[:id]
+    if params[:hiperlink] 
+      @article = Article.find_by_title params[:hiperlink]
+    else
+      @article = Article.find params[:id]
+    end
   end
 end

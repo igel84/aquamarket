@@ -15,3 +15,7 @@
   = content_tag (@product.discount_price.nil? ? :div : :s), @product.price
   = @product.discount_price
 %p!= @product.description
+= form_for :cart_item, url: add_to_cart_path, method: :post do |f|
+  = f.hidden_field :product_id, value: @product.id
+  = f.number_field :quantity, min: 1, max: 999, value: 1, size: 2
+  = f.submit t(:add_to_cart)
