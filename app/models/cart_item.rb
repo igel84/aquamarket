@@ -1,9 +1,9 @@
 class CartItem
   attr_reader :product, :quantity
 
-  def initialize product
+  def initialize product quantity
     @product = product
-    @quantity = 1
+    @quantity = quantity
   end
 
   def increment_quantity quantity
