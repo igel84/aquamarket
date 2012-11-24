@@ -10,13 +10,27 @@ article_translations:
   - created_at
   - updated_at
   records: 
-  - - 1
-    - 1
+  - - 5
+    - 4
     - en
-    - qwerty
-    - ! "<p>\r\n\tgfhdfhdfh</p>\r\n"
-    - 2012-11-23 05:00:35.000000000 Z
-    - 2012-11-23 05:00:35.000000000 Z
+    - first title
+    - ! "<p>\r\n\tfirst body</p>\r\n"
+    - 2012-11-22 13:42:28.000000000 Z
+    - 2012-11-22 13:42:28.000000000 Z
+  - - 6
+    - 5
+    - en
+    - second title
+    - ! "<p>\r\n\tsecond body 133</p>\r\n"
+    - 2012-11-22 13:42:48.000000000 Z
+    - 2012-11-22 14:03:06.000000000 Z
+  - - 7
+    - 6
+    - en
+    - new title 333
+    - ! "<p>\r\n\tnew body 333</p>\r\n"
+    - 2012-11-22 14:04:43.000000000 Z
+    - 2012-11-22 14:04:43.000000000 Z
 
 ---
 articles:
@@ -25,9 +39,15 @@ articles:
   - created_at
   - updated_at
   records: 
-  - - 1
-    - 2012-11-23 05:00:35.000000000 Z
-    - 2012-11-23 05:00:35.000000000 Z
+  - - 4
+    - 2012-11-22 13:42:28.000000000 Z
+    - 2012-11-22 13:42:28.000000000 Z
+  - - 5
+    - 2012-11-22 13:42:48.000000000 Z
+    - 2012-11-22 14:03:06.000000000 Z
+  - - 6
+    - 2012-11-22 14:04:43.000000000 Z
+    - 2012-11-22 14:04:43.000000000 Z
 
 ---
 catalogue_section_translations:
@@ -42,21 +62,15 @@ catalogue_section_translations:
   - - 1
     - 1
     - en
-    - first section
-    - 2012-11-23 03:51:23.000000000 Z
-    - 2012-11-23 03:51:23.000000000 Z
+    - test section
+    - 2012-11-22 15:10:43.000000000 Z
+    - 2012-11-22 15:10:43.000000000 Z
   - - 2
-    - 2
-    - en
-    - second section
-    - 2012-11-23 04:52:00.000000000 Z
-    - 2012-11-23 04:52:00.000000000 Z
-  - - 3
-    - 2
+    - 1
     - ru
-    - Вторая секция
-    - 2012-11-23 04:52:00.000000000 Z
-    - 2012-11-23 04:52:00.000000000 Z
+    - тестовая секция каталога
+    - 2012-11-22 15:28:40.000000000 Z
+    - 2012-11-22 15:28:40.000000000 Z
 
 ---
 catalogue_sections:
@@ -66,11 +80,107 @@ catalogue_sections:
   - updated_at
   records: 
   - - 1
-    - 2012-11-23 03:51:23.000000000 Z
-    - 2012-11-23 03:51:23.000000000 Z
+    - 2012-11-22 15:10:42.000000000 Z
+    - 2012-11-22 15:28:40.000000000 Z
+
+---
+menu_item_translations:
+  columns:
+  - id
+  - menu_item_id
+  - locale
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - en
+    - Catalog
+    - 2012-11-24 11:23:39.000000000 Z
+    - 2012-11-24 11:23:39.000000000 Z
   - - 2
-    - 2012-11-23 04:52:00.000000000 Z
-    - 2012-11-23 04:52:00.000000000 Z
+    - 1
+    - ru
+    - Каталог
+    - 2012-11-24 11:24:04.000000000 Z
+    - 2012-11-24 11:24:04.000000000 Z
+
+---
+menu_items:
+  columns:
+  - id
+  - url
+  - parent_id
+  - lft
+  - rgt
+  - depth
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - /catalogs/
+    - 
+    - 
+    - 
+    - 
+    - 2012-11-24 11:23:39.000000000 Z
+    - 2012-11-24 11:24:04.000000000 Z
+
+---
+product_attribute_translations:
+  columns:
+  - id
+  - product_attribute_id
+  - locale
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - en
+    - width
+    - 2012-11-23 12:57:23.000000000 Z
+    - 2012-11-24 05:26:20.000000000 Z
+  - - 2
+    - 2
+    - en
+    - second
+    - 2012-11-23 12:57:30.000000000 Z
+    - 2012-11-23 12:57:30.000000000 Z
+  - - 3
+    - 2
+    - ru
+    - второй
+    - 2012-11-23 12:57:45.000000000 Z
+    - 2012-11-23 12:57:45.000000000 Z
+  - - 4
+    - 1
+    - ru
+    - Ширина
+    - 2012-11-24 05:26:44.000000000 Z
+    - 2012-11-24 05:26:44.000000000 Z
+
+---
+product_attributes:
+  columns:
+  - id
+  - name
+  - created_at
+  - updated_at
+  - value
+  records: 
+  - - 1
+    - width
+    - 2012-11-23 12:57:23.000000000 Z
+    - 2012-11-24 05:26:44.000000000 Z
+    - '100'
+  - - 2
+    - second
+    - 2012-11-23 12:57:30.000000000 Z
+    - 2012-11-23 17:56:01.000000000 Z
+    - '100'
 
 ---
 product_images:
@@ -83,14 +193,9 @@ product_images:
   records: 
   - - 1
     - 1
-    - 5a1a60206535ab5f16a7ac71f4e3c9e9.jpg
-    - 2012-11-23 06:08:04.000000000 Z
-    - 2012-11-23 06:08:04.000000000 Z
-  - - 2
-    - 1
-    - 22b8bc28f4af699d25bf59efe11a26cd.jpg
-    - 2012-11-23 06:08:33.000000000 Z
-    - 2012-11-23 06:08:33.000000000 Z
+    - 397a9c9ef0811627f59c655ffd70648a.jpg
+    - 2012-11-23 15:00:58.000000000 Z
+    - 2012-11-23 15:00:58.000000000 Z
 
 ---
 product_translations:
@@ -110,16 +215,24 @@ product_translations:
     - qwerty
     - test
     - ! "<p>\r\n\ttest test</p>\r\n"
-    - 2012-11-23 06:08:04.000000000 Z
-    - 2012-11-23 06:08:04.000000000 Z
+    - 2012-11-23 14:46:26.000000000 Z
+    - 2012-11-23 14:46:26.000000000 Z
   - - 2
+    - 2
+    - en
+    - test product
+    - asdas
+    - ! "<p>\r\n\tasdsadfsd fds&nbsp;</p>\r\n"
+    - 2012-11-24 07:23:24.000000000 Z
+    - 2012-11-24 07:23:24.000000000 Z
+  - - 3
     - 1
     - ru
-    - абвгд
+    - абв
     - тест
     - ! "<p>\r\n\tтест тест</p>\r\n"
-    - 2012-11-23 06:32:55.000000000 Z
-    - 2012-11-23 06:32:55.000000000 Z
+    - 2012-11-24 07:34:43.000000000 Z
+    - 2012-11-24 07:34:43.000000000 Z
 
 ---
 products:
@@ -132,15 +245,40 @@ products:
   - created_at
   - updated_at
   - art
+  - product_attributes
   records: 
   - - 1
     - 1
     - 5.0
     - 4.0
     - 50
-    - 2012-11-23 06:08:04.000000000 Z
-    - 2012-11-23 06:32:55.000000000 Z
+    - 2012-11-23 14:46:26.000000000 Z
+    - 2012-11-24 07:34:43.000000000 Z
     - abc1
+    - ! '---
+
+      - ''''
+
+      - ''1''
+
+      - ''2''
+
+'
+  - - 2
+    - 1
+    - 7.0
+    - 
+    - 
+    - 2012-11-24 07:23:23.000000000 Z
+    - 2012-11-24 07:23:23.000000000 Z
+    - abc2
+    - ! '---
+
+      - ''''
+
+      - ''2''
+
+'
 
 ---
 rails_admin_histories:
@@ -156,59 +294,239 @@ rails_admin_histories:
   - updated_at
   records: 
   - - 1
-    - Created first section
-    - admin@example.com
-    - 1
-    - Catalogue section
-    - 
-    - 
-    - 2012-11-23 03:51:23.000000000 Z
-    - 2012-11-23 03:51:23.000000000 Z
-  - - 2
-    - Created second section
-    - admin@example.com
-    - 2
-    - Catalogue section
-    - 
-    - 
-    - 2012-11-23 04:52:00.000000000 Z
-    - 2012-11-23 04:52:00.000000000 Z
-  - - 3
-    - Created qwerty
+    - Created original title
     - admin@example.com
     - 1
     - Article
     - 
     - 
-    - 2012-11-23 05:00:35.000000000 Z
-    - 2012-11-23 05:00:35.000000000 Z
+    - 2012-11-22 13:19:20.000000000 Z
+    - 2012-11-22 13:19:20.000000000 Z
+  - - 2
+    - Created title
+    - admin@example.com
+    - 2
+    - Article
+    - 
+    - 
+    - 2012-11-22 13:32:26.000000000 Z
+    - 2012-11-22 13:32:26.000000000 Z
+  - - 3
+    - Destroyed title
+    - admin@example.com
+    - 3
+    - Article translation
+    - 
+    - 
+    - 2012-11-22 13:35:51.000000000 Z
+    - 2012-11-22 13:35:51.000000000 Z
   - - 4
+    - Destroyed en title
+    - admin@example.com
+    - 2
+    - Article translation
+    - 
+    - 
+    - 2012-11-22 13:35:51.000000000 Z
+    - 2012-11-22 13:35:51.000000000 Z
+  - - 5
+    - Destroyed original title
+    - admin@example.com
+    - 1
+    - Article translation
+    - 
+    - 
+    - 2012-11-22 13:35:51.000000000 Z
+    - 2012-11-22 13:35:51.000000000 Z
+  - - 6
+    - ! 'Destroyed '
+    - admin@example.com
+    - 2
+    - Article
+    - 
+    - 
+    - 2012-11-22 13:36:07.000000000 Z
+    - 2012-11-22 13:36:07.000000000 Z
+  - - 7
+    - ! 'Destroyed '
+    - admin@example.com
+    - 1
+    - Article
+    - 
+    - 
+    - 2012-11-22 13:36:07.000000000 Z
+    - 2012-11-22 13:36:07.000000000 Z
+  - - 8
+    - Created test
+    - admin@example.com
+    - 3
+    - Article
+    - 
+    - 
+    - 2012-11-22 13:36:42.000000000 Z
+    - 2012-11-22 13:36:42.000000000 Z
+  - - 9
+    - Destroyed test
+    - admin@example.com
+    - 3
+    - Article
+    - 
+    - 
+    - 2012-11-22 13:37:12.000000000 Z
+    - 2012-11-22 13:37:12.000000000 Z
+  - - 10
+    - Created first title
+    - admin@example.com
+    - 4
+    - Article
+    - 
+    - 
+    - 2012-11-22 13:42:28.000000000 Z
+    - 2012-11-22 13:42:28.000000000 Z
+  - - 11
+    - Created second title
+    - admin@example.com
+    - 5
+    - Article
+    - 
+    - 
+    - 2012-11-22 13:42:48.000000000 Z
+    - 2012-11-22 13:42:48.000000000 Z
+  - - 12
+    - Created new title 333
+    - admin@example.com
+    - 6
+    - Article
+    - 
+    - 
+    - 2012-11-22 14:04:43.000000000 Z
+    - 2012-11-22 14:04:43.000000000 Z
+  - - 13
+    - Created test section
+    - admin@example.com
+    - 1
+    - Catalogue section
+    - 
+    - 
+    - 2012-11-22 15:10:43.000000000 Z
+    - 2012-11-22 15:10:43.000000000 Z
+  - - 14
+    - ! 'Added Catalogue_section_translations #2 associations'
+    - admin@example.com
+    - 1
+    - Catalogue section
+    - 
+    - 
+    - 2012-11-22 15:28:40.000000000 Z
+    - 2012-11-22 15:28:40.000000000 Z
+  - - 15
+    - Created first
+    - admin@example.com
+    - 1
+    - Product attribute
+    - 
+    - 
+    - 2012-11-23 12:57:23.000000000 Z
+    - 2012-11-23 12:57:23.000000000 Z
+  - - 16
+    - Created second
+    - admin@example.com
+    - 2
+    - Product attribute
+    - 
+    - 
+    - 2012-11-23 12:57:30.000000000 Z
+    - 2012-11-23 12:57:30.000000000 Z
+  - - 17
+    - ! 'Added Product_attribute_translations #3 associations'
+    - admin@example.com
+    - 2
+    - Product attribute
+    - 
+    - 
+    - 2012-11-23 12:57:45.000000000 Z
+    - 2012-11-23 12:57:45.000000000 Z
+  - - 18
     - Created qwerty
     - admin@example.com
     - 1
     - Product
     - 
     - 
-    - 2012-11-23 06:08:04.000000000 Z
-    - 2012-11-23 06:08:04.000000000 Z
-  - - 5
-    - ! 'Added Product_images #2 associations'
+    - 2012-11-23 14:46:26.000000000 Z
+    - 2012-11-23 14:46:26.000000000 Z
+  - - 19
+    - ! 'Added Product_images #1 associations'
     - admin@example.com
     - 1
     - Product
     - 
     - 
-    - 2012-11-23 06:08:33.000000000 Z
-    - 2012-11-23 06:08:33.000000000 Z
-  - - 6
-    - ! 'Added Product_translations #2 associations'
+    - 2012-11-23 15:00:58.000000000 Z
+    - 2012-11-23 15:00:58.000000000 Z
+  - - 20
+    - Changed value
+    - admin@example.com
+    - 2
+    - Product attribute
+    - 
+    - 
+    - 2012-11-23 17:56:01.000000000 Z
+    - 2012-11-23 17:56:01.000000000 Z
+  - - 21
+    - Changed value
+    - admin@example.com
+    - 1
+    - Product attribute
+    - 
+    - 
+    - 2012-11-24 05:26:20.000000000 Z
+    - 2012-11-24 05:26:20.000000000 Z
+  - - 22
+    - ! 'Added Product_attribute_translations #4 associations'
+    - admin@example.com
+    - 1
+    - Product attribute
+    - 
+    - 
+    - 2012-11-24 05:26:44.000000000 Z
+    - 2012-11-24 05:26:44.000000000 Z
+  - - 23
+    - Created test product
+    - admin@example.com
+    - 2
+    - Product
+    - 
+    - 
+    - 2012-11-24 07:23:24.000000000 Z
+    - 2012-11-24 07:23:24.000000000 Z
+  - - 24
+    - ! 'Added Product_translations #3 associations'
     - admin@example.com
     - 1
     - Product
     - 
     - 
-    - 2012-11-23 06:32:55.000000000 Z
-    - 2012-11-23 06:32:55.000000000 Z
+    - 2012-11-24 07:34:43.000000000 Z
+    - 2012-11-24 07:34:43.000000000 Z
+  - - 25
+    - Created Catalog
+    - admin@example.com
+    - 1
+    - Menu item
+    - 
+    - 
+    - 2012-11-24 11:23:39.000000000 Z
+    - 2012-11-24 11:23:39.000000000 Z
+  - - 26
+    - ! 'Added Menu_item_translations #2 associations'
+    - admin@example.com
+    - 1
+    - Menu item
+    - 
+    - 
+    - 2012-11-24 11:24:04.000000000 Z
+    - 2012-11-24 11:24:04.000000000 Z
 
 ---
 role_users:
@@ -261,10 +579,10 @@ users:
     - 
     - 
     - 2012-11-22 07:27:28.000000000 Z
-    - 3
-    - 2012-11-23 03:50:54.000000000 Z
-    - 2012-11-22 10:55:44.000000000 Z
+    - 5
+    - 2012-11-24 05:24:44.000000000 Z
+    - 2012-11-23 12:45:09.000000000 Z
     - 127.0.0.1
     - 127.0.0.1
     - 2012-11-22 07:22:33.000000000 Z
-    - 2012-11-23 03:50:54.000000000 Z
+    - 2012-11-24 05:24:44.000000000 Z
