@@ -10,7 +10,7 @@ RailsAdmin.config do |config|
 
 #  config.included_models = ['Article', 'User']
 
-  config.label_methods << :email
+  [:email, :locale].each{ |attr| config.label_methods << attr }
 
   config.model 'Article' do
       configure :article_translations, :has_many_association
