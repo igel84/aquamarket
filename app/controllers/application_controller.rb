@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :current_locale, :find_cart
+  before_filter :current_locale, :find_cart, :find_menu
   helper_method :current_locale
 
   def current_locale
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
     def find_cart
       session[:cart] ||= Cart.new
+    end
+
+    def find_menu
+      @menu_items = MenuItem.where parent_id: nil
     end
 
 end

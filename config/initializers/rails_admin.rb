@@ -257,9 +257,9 @@ RailsAdmin.config do |config|
   end
 
   config.model 'MenuItem' do
-    configure :menu_items, :has_many_association
     configure :id, :integer 
-    configure :parent_id, :integer
+    configure :parent, :belongs_to_association
+    configure :children, :has_many_association
     configure :lft, :integer
     configure :rgt, :integer
     configure :depth, :integer
@@ -299,7 +299,7 @@ RailsAdmin.config do |config|
     list do
       field :locale
       field :name
-      field :product_attribute
+      field :menu_item
     end
     show do; end
     edit do
