@@ -11,8 +11,8 @@ class CartItem
     @quantity += quantity
   end
 
-  def title
-    @product.title
+  def name
+    @product.name
   end
 
   def price
