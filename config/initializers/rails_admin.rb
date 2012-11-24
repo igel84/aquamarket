@@ -271,9 +271,11 @@ RailsAdmin.config do |config|
       field :name
       field :url
       field :menu_item_translations
+      field :parent
     end
     show do; end
     edit do
+      field :parent
       field :name do
         length do
           255
