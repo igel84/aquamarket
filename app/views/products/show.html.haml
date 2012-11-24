@@ -7,7 +7,6 @@
   \/
   = @product.name
 %h1= @product.name
-%p!= @product.description
 %p
   - @product.product_images.each do |photo|
     = link_to image_tag(photo.image.small), photo.image.medium.url
@@ -15,3 +14,4 @@
   = t :price_title
   = content_tag (@product.discount_price.nil? ? :div : :s), @product.price
   = @product.discount_price
+%p!= @product.description

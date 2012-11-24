@@ -1,6 +1,7 @@
 class CatalogsController < ApplicationController
   def index
-    @catalogue_sections = CatalogueSection.includes :products
+    @catalogue_sections = CatalogueSection.includes
+    @products= Product.all
   end
 
   def show
