@@ -3,11 +3,11 @@ class CartItem
 
   def initialize(product, quantity=1)
     @product = product
-    @quantity = quantity
+    @quantity = quantity.to_i
   end
 
-  def increment_quantity(quantity=1)
-    @quantity += quantity
+  def increment_quantity(quantity)
+    @quantity += quantity.to_i
   end
 
   def name

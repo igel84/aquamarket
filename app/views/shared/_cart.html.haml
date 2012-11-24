@@ -1,4 +1,5 @@
 #cart
   = t(:cart_title)
-  %p
-    = t(:items_in_cart) + ':' + @cart.items.size.to_s
+  %p= t(:items_in_cart) + ':' + @cart.quantity.to_s
+  %p= t(:cart_total_price) + ':' + @cart.price.to_s
+  %p= @cart.items.inspect
