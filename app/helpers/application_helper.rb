@@ -12,7 +12,7 @@ module ApplicationHelper
       @i = ''
       subitems = MenuItem.where(parent_id: item.id).each { |i| @i << content_tag(:li, link_to(i.name, "/" + @locale.to_s + i.url)) } 
       sub_menu = content_tag(:ul, raw(@i))
-      content_tag(:li, link_to(item.name, "/" + @locale.to_s + item.url) + sub_menu)
+      content_tag(:li, link_to(item.name, item.url) + sub_menu)
     end
 
 end

@@ -77,10 +77,6 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     fssm (0.2.9)
-    globalize3 (0.2.0)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      paper_trail (~> 2)
     gritter (1.0.2)
     gritter_notices (0.4.0)
       gritter
@@ -123,9 +119,6 @@ GEM
     nested_form (0.2.3)
     nokogiri (1.5.5)
     orm_adapter (0.4.0)
-    paper_trail (2.6.4)
-      activerecord (~> 3.0)
-      railties (~> 3.0)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -213,7 +206,6 @@ DEPENDENCIES
   compass-rails
   devise
   execjs
-  globalize3
   gritter_notices
   haml-rails
   jquery-rails

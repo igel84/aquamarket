@@ -6,12 +6,11 @@ Golf::Application.routes.draw do
 
   post '/cart/add_to_cart', controller: :cart, action: :add_to_cart, as: 'add_to_cart'
 
-  scope "(:locale)", locale: /en|ru/ do
-    root to: 'catalogs#index'
-    resources :articles
-    resources :catalogs do
-      resources :products
-    end
+
+  root to: 'articles#show'#, id: Article.find_by_title('root').id
+  resources :articles
+  resources :catalogs do
+    resources :products
   end
 
   match ':hiperlink' => "articles#show"#, :as => 'hiperlink'

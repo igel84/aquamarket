@@ -13,35 +13,16 @@
 
 ActiveRecord::Schema.define(:version => 20121124105918) do
 
-  create_table "article_translations", :force => true do |t|
-    t.integer  "article_id"
-    t.string   "locale"
+  create_table "articles", :force => true do |t|
     t.string   "title"
+    t.string   "name"
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "article_translations", ["article_id"], :name => "index_article_translations_on_article_id"
-  add_index "article_translations", ["locale"], :name => "index_article_translations_on_locale"
-
-  create_table "articles", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "catalogue_section_translations", :force => true do |t|
-    t.integer  "catalogue_section_id"
-    t.string   "locale"
-    t.string   "name"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-  end
-
-  add_index "catalogue_section_translations", ["catalogue_section_id"], :name => "index_b6e872666f9568af94f09a51977fcff7980683d6"
-  add_index "catalogue_section_translations", ["locale"], :name => "index_catalogue_section_translations_on_locale"
-
   create_table "catalogue_sections", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -74,18 +55,8 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
 
   add_index "gritter_notices", ["owner_id", "delivered_at"], :name => "index_gritter_notices_on_owner_id_and_delivered_at"
 
-  create_table "menu_item_translations", :force => true do |t|
-    t.integer  "menu_item_id"
-    t.string   "locale"
-    t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "menu_item_translations", ["locale"], :name => "index_menu_item_translations_on_locale"
-  add_index "menu_item_translations", ["menu_item_id"], :name => "index_menu_item_translations_on_menu_item_id"
-
   create_table "menu_items", :force => true do |t|
+    t.string   "name"
     t.string   "url"
     t.integer  "parent_id"
     t.integer  "lft"
@@ -94,17 +65,6 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "product_attribute_translations", :force => true do |t|
-    t.integer  "product_attribute_id"
-    t.string   "locale"
-    t.string   "name"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
-  end
-
-  add_index "product_attribute_translations", ["locale"], :name => "index_product_attribute_translations_on_locale"
-  add_index "product_attribute_translations", ["product_attribute_id"], :name => "index_794d67e3f767e4884c1d2d024fc265d1109a9033"
 
   create_table "product_attributes", :force => true do |t|
     t.string   "name"
@@ -120,27 +80,16 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "product_translations", :force => true do |t|
-    t.integer  "product_id"
-    t.string   "locale"
+  create_table "products", :force => true do |t|
     t.string   "name"
     t.text     "preview"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "product_translations", ["locale"], :name => "index_product_translations_on_locale"
-  add_index "product_translations", ["product_id"], :name => "index_product_translations_on_product_id"
-
-  create_table "products", :force => true do |t|
     t.integer  "catalogue_section_id"
     t.decimal  "price",                :precision => 10, :scale => 0
     t.decimal  "discount_price",       :precision => 10, :scale => 0
     t.integer  "quantity"
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
-    t.string   "art"
     t.text     "product_attributes"
   end
 
