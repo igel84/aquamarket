@@ -81,6 +81,12 @@ set :repository,      "git://github.com/igel84/aquamarket.git"
 ## Если ваш репозиторий в GitHub, используйте такую конфигурацию
 # set :repository,    "git@github.com:username/project.git"
 
+after "deploy:update_code", :do_migrations
+
+task :do_migrations, roles => :app do
+  run "cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec rake RAILS_ENV=production db:migrate"
+end
+
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 
 before 'deploy:finalize_update', 'set_current_release'
