@@ -4,7 +4,7 @@ class ProductUploader < CarrierWave::Uploader::Base
   include UploadImage
 
   version :thumb do
-    process resize_to_fill: [100, 100]
+    process resize_to_fit: [128, 128]
   end
 
   version :small do

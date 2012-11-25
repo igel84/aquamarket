@@ -1,1 +1,4 @@
+- content_for :head do
+  %title= @article == nil ? 'Аквамаркет, г.Воронеж' : @article.title  
+%h1.componentheading= @article.title
 != @article.body

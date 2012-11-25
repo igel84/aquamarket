@@ -1,5 +1,0 @@
-class AddArticuleToProducts < ActiveRecord::Migration
-  def change
-    add_column :products, :art, :string
-  end
-end

@@ -2,36 +2,27 @@
 <!-- saved from url=(0044)http://aquamarket-vrn.ru/2012-04-02-10-34-43 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	  <!--<base href="http://aquamarket-vrn.ru/2012-04-02-10-34-43">--><base href=".">
-  
-  <meta name="robots" content="index, follow">
-  <meta name="keywords" content="joomla, Joomla">
-  <meta name="title" content="Вода в бутылях">
-  <meta name="author" content="redaktor">
-  <meta name="description" content="Joomla! - the dynamic portal engine and content management system">
-  <meta name="generator" content="Joomla! 1.5 - Open Source Content Management">
-  <title>Вода в бутылях</title>
-  <%= stylesheet_link_tag 'application' %>
-  <link rel="stylesheet" href="./Вода в бутылях_files/tienda_cart.css" type="text/css">
-  <script type="text/javascript" async="" src="./Вода в бутылях_files/watch.js"></script><script type="text/javascript" src="./Вода в бутылях_files/mootools.js"></script>
-  <script type="text/javascript" src="./Вода в бутылях_files/caption.js"></script>
 
-	<link rel="stylesheet" href="./Вода в бутылях_files/template.css" type="text/css">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="аквамаркет воронеж">
+  <meta name="title" content="#{@article == nil ? 'Аквамаркет, г.Воронеж' : @article.title}">
+  <meta name="author" content="mlip.ru">
+  <meta name="description" content="водоподготовка и очистка воды в воронеже">
 	<link type="image/png" href="/assets/favicon.png" rel="shortcut icon">
-<script>window["_GOOG_TRANS_EXT_VER"] = "1";</script></head>
+  <script>window["_GOOG_TRANS_EXT_VER"] = "1";</script>
+
+<%= stylesheet_link_tag 'application' %>
+<%= javascript_include_tag 'application' %>
+<%= yield :head %>
+<%= csrf_meta_tags %>
+</head>
 <body>
 	<div class="main_wrap">
 		<%= link_to :root, class:"logo" do %>
 			<%= image_tag 'logo.png', alt:"Аква-маркет водоподготовка и очистка воды", title:"Аква-маркет водоподготовка и очистка воды" %>
 		<% end %>
 		<div id="tiendaUserShoppingCart">
-      <span class="CartItems">
-        <span class="qty">1</span> 
-        Товар
-      </span>
-      <span class="CartTotal">
-        Итого: 
-        <span>867&nbsp; .руб</span> 
-      </span> 
+      <%= render 'shared/cart' if @cart && @cart.quantity > 0 %>      
       <div class="reset"></div>
     </div>
     <ul class="menu">
@@ -81,7 +72,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
 ";"+Math.random()+
 "' alt='' title='LiveInternet' "+
 "border='0' width='31' height='31'><\/a>")
-//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="./Вода в бутылях_files/hit" alt="" title="LiveInternet" border="0" width="31" height="31"></a><!--/LiveInternet-->
+//--></script><a href="http://www.liveinternet.ru/click" target="_blank"><img src="/assets/hit.gif" alt="" title="LiveInternet" border="0" width="31" height="31"></a><!--/LiveInternet-->
 				</span><br><br>
 				<a target="_blank" href="http://www.umnoe-seo.ru/sozdanie-sajtov">Создание</a> и <a target="_blank" href="http://www.umnoe-seo.ru/">продвижение сайта</a> ‒ «Умное SEO»
 				
@@ -109,7 +100,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
     } else { f(); }
 })(document, window, "yandex_metrika_callbacks");
 </script>
-<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/13381879" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<noscript><div><img src="//mc.yandex.ru/watch/13381879" style="position:absolute; left:-9999px;" alt="" ></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
 

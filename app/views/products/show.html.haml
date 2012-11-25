@@ -1,21 +1,31 @@
+- content_for :head do
+  %title= @product.catalogue_section.name + ' - ' + @product.name
 %p
-  = link_to t(:root_title), root_path
+  = link_to 'Каталог', catalogs_path
   \/
-  = link_to t(:catalog_title), catalogs_path(@locale)
-  \/
-  = link_to @product.catalogue_section.name, catalog_path(@locale, @product.catalogue_section)
+  = link_to @product.catalogue_section.name, catalog_path(@product.catalogue_section)
   \/
   = @product.name
-%h1= @product.name
-%p
-  - @product.product_images.each do |photo|
-    = link_to image_tag(photo.image.small), photo.image.medium.url
-%p
-  = t :price_title
-  = content_tag (@product.discount_price.nil? ? :div : :s), @product.price
-  = @product.discount_price
-%p!= @product.description
-= form_for :cart_item, url: add_to_cart_path, method: :post do |f|
-  = f.hidden_field :product_id, value: @product.id
-  = f.number_field :quantity, min: 1, max: 999, value: 1, size: 2
-  = f.submit t(:add_to_cart)
+#tienda.products.view
+  #tienda_product
+    #tienda_product_header
+      %h1= @product.name
+    .product_image{style: 'float:left'}
+      = link_to @product.product_images.first.image.medium.url, class: 'modal', :rel => "{handler:'image'}" do
+        %span
+          = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}")#, @product.product_images.first.image.medium.url)      
+    #product_description
+      != @product.description
+      #product_buy_4.product_buy
+        = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
+          / base price
+          %span#product_price_4.product_price
+            %span Цена:
+            = @product.price
+            руб.
+            / For UE States, we should let the admin choose to show (+19% vat) and (link to the shipping rates)
+          / Add to cart button
+          #add_to_cart_4.add_to_cart
+            = f.hidden_field :product_id, value: @product.id
+            = f.hidden_field :quantity, value: 1
+            %img.addcart{:alt => "Add to Cart", :onclick => "submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/

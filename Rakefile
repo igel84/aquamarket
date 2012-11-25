@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Golf::Application.load_tasks
+InitialRelease::Application.load_tasks

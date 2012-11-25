@@ -22,4 +22,17 @@ class Cart
     @items.sum{ |item| item.quantity }
   end
 
+  def conversion(product, product_quantity=1)
+    current_item = @items.find { |item| item.product == product }
+    if current_item
+      current_item.set_quantity(product_quantity)
+    else
+      @items << CartItem.new(product, product_quantity)
+    end
+  end
+
+  def destroy_item(product)
+    @items.delete_if { |item| item.product.id == product.to_i }
+  end
+
 end

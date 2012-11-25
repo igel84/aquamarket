@@ -14,6 +14,7 @@ RailsAdmin.config do |config|
 
   config.model 'Article' do
       configure :id, :integer 
+      configure :name, :string      
       configure :title, :string
       configure :body, :text
       configure :created_at, :datetime 
@@ -23,6 +24,7 @@ RailsAdmin.config do |config|
       end
       show do; end
       edit do
+        field :name
         field :title
         field :body do
           ckeditor do 
@@ -59,8 +61,8 @@ RailsAdmin.config do |config|
     configure :preview, :text
     configure :description, :text
     configure :price, :decimal
-    configure :discount_price, :decimal
-    configure :quantity, :integer
+    #configure :discount_price, :decimal
+    #configure :quantity, :integer
     configure :created_at, :datetime 
     configure :updated_at, :datetime 
     list do
@@ -77,8 +79,8 @@ RailsAdmin.config do |config|
         end
       end
       field :price
-      field :discount_price
-      field :quantity
+      #field :discount_price
+      #field :quantity
       field :preview
       field :description do
         ckeditor do 

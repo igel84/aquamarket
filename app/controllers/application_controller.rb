@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
     def find_cart
+      #session[:cart] = nil
       @cart = session[:cart] ||= Cart.new
     end
 

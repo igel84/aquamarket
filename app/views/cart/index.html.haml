@@ -1,0 +1,43 @@
+- content_for :head do
+  %title Корзина
+.componentheading
+  %h1 Моя корзина
+%br/
+%br/
+- if @cart.items == []
+  %p Ваша корзина пуста
+- else
+  .cartitems
+    %table{width:'100%'}
+      %thead
+        %tr
+          %th{align: 'left'} Товар
+          %th{align: 'center', :colspan => "3", :style => "width: 100px;"} Количество
+          %th{align: 'center', :style => "width: 150px;"} Итого
+          %th{:style => "width: 30px;"} &nbsp;
+        %tbody
+          - @cart.items.each do |item|
+            %tr
+              %td
+                = link_to item.name, catalog_product_path(Product.find(item.product.id).catalogue_section, item.product)
+                %br/
+                Цена:
+                = item.product.price
+                руб.
+              %td{align: 'center', :style => "width: 30px;"}
+                = link_to cart_conversion_path(product: item.product, quantity: item.quantity - 1) do
+                  = image_tag "/assets/minus.png"
+              %td{align: 'center'}= item.quantity
+              %td{align: 'center', :style => "width: 30px;"}
+                = link_to cart_conversion_path(product: item.product, quantity: item.quantity + 1) do
+                  = image_tag "/assets/plus.png"
+              %td{align: 'center'}
+                = item.price
+                руб.
+              %td
+                = link_to destroy_cart_item_path(item.product.id), :confirm => 'вы уверены?', :method => :delete do
+                  = image_tag "/assets/del.png"
+  %br/
+  %br/
+  = link_to 'Продолжить покупки', catalogs_path
+  %a{:href => "/cart/checkout", :onclick => "return tiendaCheckUpdateCartQuantities(document.adminForm, 'Вы обновили количество товаров в корзине, не обновив саму корзину! если Вы продолжите, внесенные изменения будут потеряны! Вы уверены что хотите продолжить?');"} Начать процесс оформления заказа

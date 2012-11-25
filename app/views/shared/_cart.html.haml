@@ -1,5 +1,12 @@
-#cart
-  = t(:cart_title)
-  %p= t(:items_in_cart) + ':' + @cart.quantity.to_s
-  %p= t(:cart_total_price) + ':' + @cart.price.to_s
-  %p= @cart.items.inspect
+%span.CartItems
+  %span.qty
+  Товары в корзине:
+  = @cart.quantity.to_s
+  шт.
+%br/
+%br/
+%span.CartTotal
+  На сумму:
+  %span
+    = @cart.price.to_s
+    руб.

@@ -1,15 +1,6 @@
-%h1= t :catalog_title
-%p
-  = link_to t(:root_title), root_path
-  \/
-  = t(:catalog_title)
+- content_for :head do
+  %title Все категории
+%h1 Все категории
 %ul
   - @catalogue_sections.try(:each) do |section|
-    %li= link_to section.name, catalog_path(current_locale, section)
-%hr
-%ul
-  - @products.try(:each) do |product|
-    %li
-      = link_to product.name, catalog_product_path(current_locale, product.catalogue_section, product)
-      = image_tag(product.product_images.first.image.small) unless product.product_images.empty?
-      %p= product.preview
+    %li= link_to section.name, catalog_path(section)

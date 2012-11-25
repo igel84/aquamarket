@@ -10,6 +10,10 @@ class CartItem
     @quantity += quantity.to_i
   end
 
+  def set_quantity(quantity)
+    @quantity = quantity.to_i
+  end
+
   def name
     @product.name
   end
