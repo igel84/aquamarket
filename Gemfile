@@ -11,7 +11,7 @@ gem 'cancan'
 gem 'gritter_notices'
 gem 'awesome_nested_set'
 gem 'haml-rails'
-gem 'yaml_db', github: 'lostapathy/yaml_db'
+#gem 'yaml_db', github: 'lostapathy/yaml_db'
 
 group :development do
   gem 'rb-readline' # for console
