@@ -85,11 +85,11 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.text     "preview"
     t.text     "description"
     t.integer  "catalogue_section_id"
-    t.decimal  "price",                :precision => 10, :scale => 0
-    t.decimal  "discount_price",       :precision => 10, :scale => 0
+    t.decimal  "price"
+    t.decimal  "discount_price"
     t.integer  "quantity"
-    t.datetime "created_at",                                          :null => false
-    t.datetime "updated_at",                                          :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.text     "product_attributes"
   end
 
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 8
+    t.integer  "year",       :limit => 5
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end

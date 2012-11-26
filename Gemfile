@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 gem 'mysql2'
+
+gem 'sqlite3'
+
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'rails_admin'
@@ -12,6 +15,7 @@ gem 'gritter_notices'
 gem 'awesome_nested_set'
 gem 'haml-rails'
 #gem 'yaml_db', github: 'lostapathy/yaml_db'
+#gem 'yaml_db', git:'git://github.com/lostapathy/yaml_db.git'
 
 group :development do
   gem 'rb-readline' # for console
