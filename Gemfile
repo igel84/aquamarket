@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
-gem 'mysql2'
-
-gem 'sqlite3'
 
 gem 'mini_magick'
 gem 'carrierwave'
@@ -18,6 +15,8 @@ gem 'haml-rails'
 #gem 'yaml_db', git:'git://github.com/lostapathy/yaml_db.git'
 
 group :development do
+  gem 'mysql2'
+
   gem 'rb-readline' # for console
   gem 'letter_opener'
   gem 'thin'
@@ -29,6 +28,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :production do
+  gem 'sqlite3'#, '1.3.4'
 end
 
 gem 'jquery-rails'
