@@ -2,6 +2,8 @@
   %title= @catalogue_section.name
 #tienda_category_header
   %h1= @catalogue_section.name
+.category_description
+  != @catalogue_section.body
 #tienda_products
   - @catalogue_section.products.try(:each) do |product|
     .product_item
@@ -10,12 +12,12 @@
           = link_to product.name, catalog_product_path(@catalogue_section, product)
       .product_thumb
         .product_listimage
-          %a{:href => "/filter-nasadki/products/view/2/4"}
-            = image_tag(product.product_images.first.image.thumb, align: "middle", alt: "#{product.name}", border: "0", title: "#{product.name}") unless product.product_images.empty?            
+          = link_to catalog_product_path(@catalogue_section, product) do
+            = image_tag(product.product_images.first.image.thumb, align: "middle", width: "96", alt: "#{product.name}", border: "0", title: "#{product.name}") unless product.product_images.empty?            
         .reset
       .wrap_product_info
         .product_info
-          .product_minidesc= product.preview
+          .product_minidesc!= product.preview
           .reset
         #product_buy_4.product_buy
           = form_for :cart_item, url: add_to_cart_path, method: :post do |f|

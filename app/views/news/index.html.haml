@@ -1,0 +1,6 @@
+- content_for :head do
+  %title Новости - Аквамаркет, г.Воронеж
+%h1.componentheading Новости
+%br/
+- @news.each do |news_item|
+  = link_to news_item.title, news_item

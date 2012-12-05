@@ -11,7 +11,12 @@ class ApplicationController < ActionController::Base
 
     def find_cart
       #session[:cart] = nil
-      @cart = session[:cart] ||= Cart.new
+      if session[:cart] == nil 
+        @cart = Cart.new
+        session[:cart] = @cart
+      else 
+        @cart = session[:cart]
+      end
     end
 
     def find_menu

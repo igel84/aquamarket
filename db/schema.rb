@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124105918) do
+ActiveRecord::Schema.define(:version => 20121205200816) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "body"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -66,6 +67,13 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "news", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "product_attributes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -85,11 +93,11 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.text     "preview"
     t.text     "description"
     t.integer  "catalogue_section_id"
-    t.decimal  "price"
-    t.decimal  "discount_price"
+    t.decimal  "price",                :precision => 10, :scale => 0
+    t.decimal  "discount_price",       :precision => 10, :scale => 0
     t.integer  "quantity"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
     t.text     "product_attributes"
   end
 
@@ -99,7 +107,7 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
+    t.integer  "year",       :limit => 8
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end
@@ -118,6 +126,16 @@ ActiveRecord::Schema.define(:version => 20121124105918) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -35,6 +35,27 @@ RailsAdmin.config do |config|
       export do; end
   end
 
+  config.model 'News' do
+      configure :id, :integer 
+      configure :title, :string
+      configure :body, :text
+      configure :created_at, :datetime 
+      configure :updated_at, :datetime 
+      list do
+        field :title        
+      end
+      show do; end
+      edit do
+        field :title
+        field :body do
+          ckeditor do 
+            true
+          end
+        end        
+      end
+      export do; end
+  end
+
   config.model 'CatalogueSection' do
       configure :products, :has_many_association
       configure :id, :integer 
@@ -48,6 +69,11 @@ RailsAdmin.config do |config|
       edit do
         field :name        
         field :products
+        field :body do
+        ckeditor do 
+          true
+        end
+      end
       end
       export do; end
   end
@@ -81,7 +107,11 @@ RailsAdmin.config do |config|
       field :price
       #field :discount_price
       #field :quantity
-      field :preview
+      field :preview do
+        ckeditor do 
+          true
+        end
+      end        
       field :description do
         ckeditor do 
           true

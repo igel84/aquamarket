@@ -11,9 +11,10 @@
     #tienda_product_header
       %h1= @product.name
     .product_image{style: 'float:left'}
-      = link_to @product.product_images.first.image.medium.url, class: 'modal', :rel => "{handler:'image'}" do
-        %span
-          = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}")#, @product.product_images.first.image.medium.url)      
+      - unless @product.product_images.empty? 
+        = link_to @product.product_images.first.image.medium.url, class: 'modal', :rel => "{handler:'image'}" do
+          %span
+            = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}") unless @product.product_images.empty? 
     #product_description
       != @product.description
       #product_buy_4.product_buy
