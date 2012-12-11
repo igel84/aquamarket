@@ -14,7 +14,7 @@ class CartController < ApplicationController
   def conversion
     @cart.conversion(Product.find(params[:product]), params[:quantity])
     redirect_to :back
-  end
+  end  
 
   def destroy_cart_item
     @cart.destroy_item(params[:product])    

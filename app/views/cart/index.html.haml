@@ -40,4 +40,4 @@
   %br/
   %br/
   = link_to 'Продолжить покупки', catalogs_path
-  %a{:href => "/cart/checkout", :onclick => "return tiendaCheckUpdateCartQuantities(document.adminForm, 'Вы обновили количество товаров в корзине, не обновив саму корзину! если Вы продолжите, внесенные изменения будут потеряны! Вы уверены что хотите продолжить?');"} Начать процесс оформления заказа
+  = link_to 'Начать процесс оформления заказа', new_order_path

@@ -1,0 +1,8 @@
+- content_for :head do
+  %title Корзина
+%h1.componentheading Информация о покупателе
+= form_tag '/finish' do
+  Адрес электронной почты:
+  %br/
+  = text_field_tag 'order[email]', @user.email
+  = submit_tag 'отправить'
