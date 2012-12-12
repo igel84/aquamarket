@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210080229) do
+ActiveRecord::Schema.define(:version => 20121212180625) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(:version => 20121210080229) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
+
+  create_table "deliveries", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "gritter_notices", :force => true do |t|
     t.integer  "owner_id",     :null => false
@@ -78,10 +84,10 @@ ActiveRecord::Schema.define(:version => 20121210080229) do
     t.integer  "order_id"
     t.integer  "product_id"
     t.integer  "quantity"
-    t.decimal  "price",      :precision => 10, :scale => 0
-    t.decimal  "summ",       :precision => 10, :scale => 0
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.decimal  "price"
+    t.decimal  "summ"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "orders", :force => true do |t|
@@ -89,8 +95,9 @@ ActiveRecord::Schema.define(:version => 20121210080229) do
     t.string   "name"
     t.string   "phone"
     t.string   "adds"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.string   "status",     :default => "в ожидании оплаты"
   end
 
   create_table "product_attributes", :force => true do |t|

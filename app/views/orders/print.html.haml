@@ -1,0 +1,58 @@
+%style
+  html{ padding:0px; margin:0 0 0 30px; }
+  body{ padding:0px; margin:0px; font-family: serif; }
+  h1 { font: bold 20px serif; }
+  h2 { font: bold 18px serif; }
+  h3 { font: bold 16px serif; }
+  h1, h2 { text-align: center; margin: 0; }
+  h3 { text-align: left; margin: 10px 0 0 0; }
+  p { padding: 0; }
+  table{ width:100% !important; border-collapse:collapse; margin-top: 10px; }  
+  table tr th { text-align: center; vertical-align: middle; border: solid 1px black; }
+  table tr td { border: solid 1px black; text-align: center;  }
+  table tr th:nth-child(1) { width: 400px; }
+  @media print { @page{ size: A4; margin-left:1cm; margin-right:1cm; } }
+%script{ :type => 'text/javascript' }
+  -#document.getElementById('header-footer').checked = false;
+  window.print();
+%h1.componentheading Информация о покупателе
+%table{width:'100%'}
+  %tr
+    %td{width:250} № заказа:
+    %td= @order.id
+  %tr
+    %td Дата:
+    %td= @order.created_at
+  %tr
+    %td Статус:
+    %td= @order.status
+  %tr
+    %td Адрес электронной почты: 
+    %td= @order.email
+  %tr
+    %td Имя: 
+    %td= @order.name
+  %tr
+    %td Адрес: 
+    %td= @order.adds
+  %tr
+    %td Телефон: 
+    %td= @order.phone
+%br/
+%h1 Товары в заказе
+%br/
+%table{width:'100%'}
+  %tr
+    %td Наименование товара
+    %td{align:'center'} Количество
+    %td{width:150, align:'center'} Итого
+  - @order.order_items.each do |item|
+    %tr
+      %td= link_to item.product.name, catalog_product_path(Product.find(item.product.id).catalogue_section, item.product)
+      %td{align:'center'}= item.quantity
+      %td{align:'center'}= item.summ.to_s + ' руб.'
+  %tr
+    %td Итого
+    %td
+    %td{align:'center'}= @order.summ.to_s + ' руб.'
+%br/

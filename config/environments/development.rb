@@ -34,4 +34,20 @@ InitialRelease::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+        :openssl_verify_mode  => 'none',
+        :enable_starttls_auto => true, #works in ruby 1.8.7 and above
+        :address => 'smtp.locum.ru',
+        :port => 2525,
+        #:domain => 'smtp.locum.ru',
+        :authentication => :plain,
+        :user_name => 'aquamarket@mlip.ru',
+        :password => 'atybrc'#,
+        #:enable_starttls_auto => true
+    }
 end

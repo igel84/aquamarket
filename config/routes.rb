@@ -10,9 +10,12 @@ InitialRelease::Application.routes.draw do
   delete '/cart/destroy_cart_item/:product' => 'cart#destroy_cart_item', as: 'destroy_cart_item'
   get '/cart' => "cart#index", as: 'cart'
 
-
   resources :news
-  resources :orders
+  resources :orders do
+    member do
+      get 'print'
+    end
+  end
   
   root to: 'articles#show'#, id: Article.find_by_title('root').id
   resources :articles

@@ -35,4 +35,12 @@ class Cart
     @items.delete_if { |item| item.product.id == product.to_i }
   end
 
+  def empty?
+    self.items.empty?
+  end
+
+  def empty!
+    @items.delete_if { |i| true }
+  end
+
 end
