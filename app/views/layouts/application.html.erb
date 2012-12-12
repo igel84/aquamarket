@@ -16,10 +16,11 @@
 
 <%= stylesheet_link_tag 'application' %>
 <%= javascript_include_tag 'application' %>
-<%= content_for?(:head) ? yield(:head) : "Аквамаркет, г.Воронеж" %>
+<%= content_for?(:head) ? yield(:head) : "<title>Аквамаркет, г.Воронеж</title>".html_safe %>
 <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link_to 'выйти', destroy_user_session_path, :method => :delete  if current_user %>
 	<div class="main_wrap">
 		<%= link_to :root, class:"logo" do %>
 			<%= image_tag 'logo.png', alt:"Аква-маркет водоподготовка и очистка воды", title:"Аква-маркет водоподготовка и очистка воды" %>
