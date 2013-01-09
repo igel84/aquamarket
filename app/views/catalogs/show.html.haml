@@ -8,27 +8,20 @@
   - @catalogue_section.products.try(:each) do |product|
     .product_item
       .product_name
-        %h2
-          = link_to product.name, catalog_product_path(@catalogue_section, product)
+        %h2= link_to product.name, catalog_product_path(@catalogue_section, product)
       .product_thumb
-        .product_listimage
-          = link_to catalog_product_path(@catalogue_section, product) do
-            = image_tag(product.product_images.first.image.thumb, align: "middle", width: "96", alt: "#{product.name}", border: "0", title: "#{product.name}") unless product.product_images.empty?            
-        .reset
+        = link_to catalog_product_path(@catalogue_section, product) do
+          = image_tag(product.product_images.first.image.thumb, align: "middle", width: "96", alt: "#{product.name}", border: "0", title: "#{product.name}") unless product.product_images.empty?            
+      .product_minidesc!= product.preview
+      .reset
       .wrap_product_info
-        .product_info
-          .product_minidesc!= product.preview
-          .reset
         #product_buy_4.product_buy
           = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
-            / base price
-            %span#product_price_4.product_price
+            .product_price
               %span Цена:
               = product.price
-              руб.
-              / For UE States, we should let the admin choose to show (+19% vat) and (link to the shipping rates)
-            / Add to cart button
-            #add_to_cart_4.add_to_cart
+              руб.          
+            .add_to_cart
               = f.hidden_field :product_id, value: product.id
               = f.hidden_field :quantity, value: 1
               %img.addcart{:alt => "Add to Cart", :onclick => "submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
