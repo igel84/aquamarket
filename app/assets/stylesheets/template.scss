@@ -184,7 +184,7 @@ div#tienda_products div.product_item {
       border:solid 2px #ccc;
     }
     margin-right: 10px;
-    min-height: 300px;
+    min-height: 250px;
     @include border-radius(20px); 
 }
 
@@ -213,7 +213,7 @@ div.wrap_product_info{
 }
 div#tienda_products div.product_thumb {
     float: right;
-    margin: 0 15px;
+    margin: 0 25px;
     min-width: 90px;
     max-width: 90px;
     width: 90px;
@@ -233,7 +233,7 @@ div#tienda_category_header h1{text-indent:0px;margin-bottom:49px;}
 div#tienda_products {font-size: 16px;}
 div#tienda_products div.product_buy {max-width: 100%;margin-top:19px;}
 div.add_to_cart{
-  margin: 30px 0 10px 100px;
+  margin: 10px 0 10px 100px;
   //width: 200px;
 
   //float:left;margin-left:185px;

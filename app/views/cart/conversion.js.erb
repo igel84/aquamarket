@@ -1,0 +1,3 @@
+<%- @cart.items.each_with_index do |item, index| %>
+$("#quantity_<%= index %>").text('<%= item.quantity %>');
+<% end %>

@@ -22,10 +22,10 @@ class Cart
     @items.sum{ |item| item.quantity }
   end
 
-  def conversion(product, product_quantity=1)
+  def conversion(product, product_quantity)
     current_item = @items.find { |item| item.product == product }
     if current_item
-      current_item.set_quantity(product_quantity)
+      product_quantity == 'sub' ? current_item.set_quantity(current_item.quantity - 1) : current_item.set_quantity(current_item.quantity + 1)
     else
       @items << CartItem.new(product, product_quantity)
     end
