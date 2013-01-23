@@ -12,7 +12,7 @@
       %h1= @product.name
     .product_image{style: 'float:left'}
       - unless @product.product_images.empty? 
-        = link_to image_tag(@product.product_images.first.image.thumb, alt: @product.name, align: "middle", border: "0", title: @product.name), @product.product_images.first.image.medium.url, title: @product.name, class: 'fancybox'
+        = link_to image_tag(@product.product_images.first.image.thumb, alt: @product.name, align: "middle", border: "0", title: @product.name), @product.product_images.first.image.url, title: @product.name, class: 'fancybox'
         -#= link_to @product.product_images.first.image.medium.url, class: 'modal fancybox', :rel => "{handler:'image'}" do
         -#  = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}") unless @product.product_images.empty? 
     #product_description
