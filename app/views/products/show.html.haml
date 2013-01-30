@@ -15,7 +15,7 @@
         = link_to image_tag(@product.product_images.first.image.thumb, alt: @product.name, align: "middle", border: "0", title: @product.name), @product.product_images.first.image.url, title: @product.name, class: 'fancybox'
         -#= link_to @product.product_images.first.image.medium.url, class: 'modal fancybox', :rel => "{handler:'image'}" do
         -#  = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}") unless @product.product_images.empty? 
-    #product_description
+    #product_description{style: 'margin-left:150px;'}
       != @product.description
       #product_buy_4.product_buy
         = form_for :cart_item, url: add_to_cart_path, method: :post do |f|

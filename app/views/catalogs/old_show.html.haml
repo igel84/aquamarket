@@ -1,0 +1,28 @@
+- content_for :head do
+  %title= @catalogue_section.name
+#tienda_category_header
+  %h1= @catalogue_section.name
+.category_description
+  != @catalogue_section.body
+#tienda_products
+  - @catalogue_section.products.each_with_index do |product, index|
+    .product_item
+      .product_name
+        %h2= link_to product.name, catalog_product_path(@catalogue_section, product)
+      .product_thumb
+        = link_to catalog_product_path(@catalogue_section, product) do
+          = image_tag(product.product_images.first.image.thumb, align: "middle", width: "96", alt: "#{product.name}", border: "0", title: "#{product.name}") unless product.product_images.empty?            
+      .product_minidesc!= '<br /> Цена: ' + product.price.to_s + ' руб.' #product.preview
+      .reset
+      .wrap_product_info
+        .product_buy
+          = form_for :cart_item, url: add_to_cart_path, method: :post, remote: true do |f|
+            .product_price
+              -#%span Цена:
+              -#= product.price
+              -#руб.          
+            .add_to_cart
+              = f.hidden_field :product_id, value: product.id
+              = f.hidden_field :quantity, value: 1
+              %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[#{index.to_s}].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
+    .reset
