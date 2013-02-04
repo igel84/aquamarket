@@ -17,6 +17,8 @@
         -#  = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}") unless @product.product_images.empty? 
     #product_description{style: 'margin-left:250px;'}
       != @product.description
+      - @product.product_types.each do |type|
+        = type.name
       #product_buy_4.product_buy
         = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
           / base price
