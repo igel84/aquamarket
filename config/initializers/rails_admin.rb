@@ -237,6 +237,24 @@ RailsAdmin.config do |config|
       field :name
       field :url      
       field :parent
+      field :up, :string do
+        label "up"
+        formatted_value do
+          o = bindings[:object]
+          v = bindings[:view]
+          url = v.main_app.menu_items_up_path(o.id)
+          v.link_to("&#8593;".html_safe,url)
+        end
+      end  
+      field :down, :string do
+        label "down"
+        formatted_value do
+          o = bindings[:object]
+          v = bindings[:view]
+          url = v.main_app.menu_items_down_path(o.id)
+          v.link_to("&#8595;".html_safe,url)
+        end
+      end        
     end
     show do; end
     edit do

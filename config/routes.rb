@@ -4,6 +4,9 @@ InitialRelease::Application.routes.draw do
   devise_for :users
   mount Ckeditor::Engine => '/ckeditor'
 
+  get '/menu_items/up/:id' => 'menu_items#up', as: 'menu_items_up'
+  get '/menu_items/down/:id' => 'menu_items#down', as: 'menu_items_down'
+
   post '/cart/add_to_cart' => "cart#add_to_cart", as: 'add_to_cart'
   
   get '/cart/conversion/:product/:quantity' => 'cart#conversion', as: 'cart_conversion'
