@@ -80,7 +80,7 @@ RailsAdmin.config do |config|
   
   config.model 'Product' do    
     configure :product_images, :has_many_association
-    configure :product_types, :has_many_association
+  #  configure :product_types, :has_many_association
 
     #configure :product_attributes, :enum
     configure :catalogue_section, :belongs_to_association
@@ -120,41 +120,41 @@ RailsAdmin.config do |config|
           true
         end
       end
-      field :product_types
+  #    field :product_types
       field :product_images
       #field :product_attributes      
     end
     export do; end
   end
 
-  config.model 'ProductType' do 
-    visible false   
-    configure :product, :belongs_to_association
-    configure :product_type_images, :has_many_association
-    configure :id, :integer   
-    configure :product_id, :integer     
-    configure :name, :string
-    configure :price, :decimal
-    configure :created_at, :datetime 
-    configure :updated_at, :datetime 
-    list do
-      field :name      
-      field :price
-      field :product_type_images
-    end
-    show do; end
-    edit do
-      field :product
-      field :name do
-        length do
-          255
-        end
-      end
-      field :price
-      field :product_type_images
-    end
-    export do; end
-  end
+  #config.model 'ProductType' do 
+  #  visible false   
+  #  configure :product, :belongs_to_association
+  #  configure :product_type_images, :has_many_association
+  #  configure :id, :integer   
+  #  configure :product_id, :integer     
+  #  configure :name, :string
+  #  configure :price, :decimal
+  #  configure :created_at, :datetime 
+  #  configure :updated_at, :datetime 
+  #  list do
+  #    field :name      
+  #    field :price
+  #    field :product_type_images
+  #  end
+  #  show do; end
+  #  edit do
+  #    field :product
+  #    field :name do
+  #      length do
+  #        255
+  #      end
+  #    end
+  #    field :price
+  #    field :product_type_images
+  #  end
+  #  export do; end
+  #end
 
   config.model 'ProductImage' do
     visible false
@@ -177,26 +177,26 @@ RailsAdmin.config do |config|
       export do; end
   end
 
-  config.model 'ProductTypeImage' do
-    visible false
-      configure :product_type, :belongs_to_association
-      configure :id, :integer 
-      configure :type_image, :carrierwave
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime 
-      list do
-        field :type_image
-        field :product_type
-      end
-      show do; end
-      edit do
-        field :product_type do
-          hide
-        end
-        field :type_image
-      end
-      export do; end
-  end
+  #config.model 'ProductTypeImage' do
+  #  visible false
+  #    configure :product_type, :belongs_to_association
+  #    configure :id, :integer 
+  #    configure :type_image, :carrierwave
+  #    configure :created_at, :datetime 
+  #    configure :updated_at, :datetime 
+  #    list do
+  #      field :type_image
+  #      field :product_type
+  #    end
+  #    show do; end
+  #    edit do
+  #      field :product_type do
+  #        hide
+  #      end
+  #      field :type_image
+  #    end
+  #    export do; end
+  #end
 
   config.model 'ProductAttribute' do    
     visible false
