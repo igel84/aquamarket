@@ -80,7 +80,7 @@ RailsAdmin.config do |config|
   
   config.model 'Product' do    
     configure :product_images, :has_many_association
-  #  configure :product_types, :has_many_association
+    configure :product_types, :has_many_association
 
     #configure :product_attributes, :enum
     configure :catalogue_section, :belongs_to_association
@@ -120,7 +120,7 @@ RailsAdmin.config do |config|
           true
         end
       end
-  #    field :product_types
+      field :product_types
       field :product_images
       #field :product_attributes      
     end
