@@ -5,7 +5,8 @@
 .category_description
   != @catalogue_section.body
 %table#products
-  - 0.upto(@catalogue_section.products.count/4) do |index|
+  - 0.upto(@catalogue_section.products.count/4) do |ind|
+    - index = ind * 4
     != '<tr>'
     - if @catalogue_section.products[index] != nil  
       %td
