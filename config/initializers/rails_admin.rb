@@ -234,6 +234,9 @@ RailsAdmin.config do |config|
     configure :created_at, :datetime 
     configure :updated_at, :datetime 
     list do
+      sort_by :lft
+      sort_reverse false
+    
       field :name
       field :url      
       field :parent
