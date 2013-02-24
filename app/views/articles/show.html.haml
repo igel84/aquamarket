@@ -1,4 +1,6 @@
 - content_for :head do
   %title= @article.title  
+  %meta{name:"keywords", content:"#{@article.title} в воронеж белгород лиски россошь борисоглебск"}
+  %meta{name:"description", content:"#{@article.title} в воронеж белгород лиски россошь борисоглебск"}
 %h1.componentheading= @article.title
 != @article.body

@@ -1,5 +1,7 @@
 - content_for :head do
   %title Все категории
+  %meta{name:"keywords", content:"#{@catalogue_sections.map{|section| section.name}.join(' ')}"}
+  %meta{name:"description", content:"#{@catalogue_sections.map{|section| section.name}.join(' ')}"}
 %h1 Все категории
 %ul
   - @catalogue_sections.try(:each) do |section|

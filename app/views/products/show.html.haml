@@ -1,5 +1,7 @@
 - content_for :head do
   %title= @product.catalogue_section.name + ' - ' + @product.name
+  %meta{name:"keywords", content:"#{@product.name} в воронеж белгород лиски россошь борисоглебск"}
+  %meta{name:"description", content:"#{@product.name} в воронеж белгород лиски россошь борисоглебск"}
 %p
   = link_to 'Каталог', catalogs_path
   \/

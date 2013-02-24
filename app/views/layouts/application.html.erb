@@ -7,16 +7,19 @@
   <base href=".">
 
   <meta name="robots" content="index, follow">
-  <meta name="keywords" content="аквамаркет воронеж">
-  <meta name="title" content="#{@article == nil ? 'Аквамаркет, г.Воронеж' : @article.title}">
   <meta name="author" content="mlip.ru">
-  <meta name="description" content="водоподготовка и очистка воды в воронеже">
-	<link type="image/png" href="/assets/favicon.png" rel="shortcut icon">
+  <link type="image/png" href="/assets/favicon.png" rel="shortcut icon">
   <script>window["_GOOG_TRANS_EXT_VER"] = "1";</script>
 
 <%= stylesheet_link_tag 'application' %>
 <%= javascript_include_tag 'application' %>
-<%= content_for?(:head) ? yield(:head) : "<title>Аквамаркет, г.Воронеж</title>".html_safe %>
+<%- if content_for?(:head) %>
+<%= yield(:head) %>
+<% else %>
+<title>Аквамаркет, г.Воронеж</title>
+<meta name="keywords" content="фильтры для очистки воды кулеры аквафор гейзер барьер воронеж водоподготовка">
+<meta name="description" content="фильтры для очистки воды кулеры аквафор гейзер барьер воронеж водоподготовка">
+<% end %>    
 <%= csrf_meta_tags %>
 </head>
 <body>

@@ -1,5 +1,7 @@
 - content_for :head do
   %title= @news_item.title  
+  %meta{name:"keywords", content:"#{@news_item.title}"}
+  %meta{name:"description", content:"#{@news_item.title}"}
 %h1.componentheading= @news_item.title
 %br/
 != @news_item.body
