@@ -32,14 +32,14 @@
             #add_to_cart_4.add_to_cart
               = f.hidden_field :product_id, value: @product.id
               = f.hidden_field :quantity, value: 1
-              %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[0].submit();щ", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
+              %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[0].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
 - if @product.product_types != []
   .clear{style:'clear:both'}
   %br/
   - @product.product_types.each_with_index do |type, index|
     -# type.product_type_images.each do |image|
     -#  = image_tag(image.type_image.thumb)
-    %table{width:'100%'}
+    %table#product_types{width:'100%'}
       %tr
         %td{width:'100px'}
           = link_to image_tag(type.product_type_images.first.type_image.box, align: "left", border: "0"), type.product_type_images.first.type_image.url, class: 'fancybox' if type.product_type_images != []
@@ -52,5 +52,6 @@
         %td{align:'middle', width:'150px'}
           = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
             = f.hidden_field :product_id, value: @product.id
+            = f.hidden_field :product_type_id, value: type.id
             = f.hidden_field :quantity, value: 1
-            %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[0].submit();щ", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
+            %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[#{index}].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/

@@ -27,17 +27,17 @@
                 = item.product.price
                 руб.
               %td{align: 'center', :style => "width: 30px;"}
-                = link_to cart_conversion_path(product: item.product, quantity: 'sub'), remote: true do
+                = link_to cart_conversion_path(product: item.product, product_type: item.product_type, quantity: 'sub'), remote: true do
                   = image_tag "/assets/minus.png"
               %td{align: 'center', id: "quantity_#{index}" }= item.quantity
               %td{align: 'center', :style => "width: 30px;"}
-                = link_to cart_conversion_path(product: item.product, quantity: 'add'), remote: true do
+                = link_to cart_conversion_path(product: item.product, product_type: item.product_type, quantity: 'add'), remote: true do
                   = image_tag "/assets/plus.png"
               %td{align: 'center'}
                 = item.price
                 руб.
               %td
-                = link_to destroy_cart_item_path(item.product.id), :confirm => 'вы уверены?', :method => :delete do
+                = link_to destroy_cart_item_path(item.product.id, item.product_type.try(:id)), :confirm => 'вы уверены?', :method => :delete do
                   = image_tag "/assets/del.png"
   %br/
   %br/

@@ -1,7 +1,13 @@
+#encoding: utf-8
 RailsAdmin.config do |config|
 
   config.yell_for_non_accessible_fields = false
-  config.authorize_with :cancan
+  #config.authorize_with :cancan
+  
+  config.authorize_with{
+    redirect_to main_app.root_path, :alert => "Вы не обладаете достаточными правами для доступа к данной странице" unless current_user && current_user.role?(:admin)
+  }
+
   config.main_app_name = ['Aquamarket', 'Admin']
   config.current_user_method { current_user } # auto-generated
   config.audit_with :history, 'User'
@@ -86,7 +92,7 @@ RailsAdmin.config do |config|
     configure :catalogue_section, :belongs_to_association
     configure :id, :integer     
     configure :name, :string
-    configure :preview, :text
+    #configure :preview, :text
     configure :description, :text
     configure :price, :decimal
     #configure :discount_price, :decimal
@@ -110,11 +116,11 @@ RailsAdmin.config do |config|
       field :price
       #field :discount_price
       #field :quantity
-      field :preview do
-        ckeditor do 
-          true
-        end
-      end        
+      #field :preview do
+      #  ckeditor do 
+      #    true
+      #  end
+      #end        
       field :description do
         ckeditor do 
           true

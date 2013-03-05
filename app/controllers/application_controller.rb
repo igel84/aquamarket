@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
         session[:cart] = @cart
       else 
         @cart = session[:cart]
+        #@cart.empty! 
       end
     end
 

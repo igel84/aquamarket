@@ -25,16 +25,18 @@
 %br/
 %table{width:'100%'}
   %tr
-    %td Наименование товара
+    %td{colspan:2} Наименование товара
     %td{align:'center'} Количество
     %td{width:150, align:'center'} Итого
   - @order.order_items.each do |item|
     %tr
       %td= link_to item.product.name, catalog_product_path(Product.find(item.product.id).catalogue_section, item.product)
+      %td!= item.product_type == nil ? '&nbsp;' : item.product_type.name
       %td{align:'center'}= item.quantity
       %td{align:'center'}= item.summ.to_s + ' руб.'
   %tr
     %td Итого
+    %td
     %td
     %td{align:'center'}= @order.summ.to_s + ' руб.'
 %br/

@@ -1,8 +1,9 @@
 class CartItem
-  attr_reader :product, :quantity
+  attr_reader :product, :product_type, :quantity
 
-  def initialize(product, quantity=1)
+  def initialize(product, product_type, quantity=1)
     @product = product
+    @product_type = product_type
     @quantity = quantity.to_i
   end
 
@@ -15,7 +16,7 @@ class CartItem
   end
 
   def name
-    @product.name
+    @product_type == nil ? @product.name : @product.name + " - " + @product_type.name
   end
 
   def price

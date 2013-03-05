@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
       @cart.items.each do |item|
         @order.order_items << OrderItem.new(
           product_id: item.product.id, 
+          product_type_id: item.product_type.try(:id), 
           quantity: item.quantity, 
           price: item.product.price, 
           summ: item.price)

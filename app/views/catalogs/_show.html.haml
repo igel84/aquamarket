@@ -1,0 +1,85 @@
+- content_for :head do
+  %title= @catalogue_section.name
+  %meta{name:"keywords", content:"#{@catalogue_section.name} в воронеж белгород лиски россошь борисоглебск"}
+  %meta{name:"description", content:"#{@catalogue_section.name} в воронеж белгород лиски россошь борисоглебск"}
+#tienda_category_header
+  %h1= @catalogue_section.name
+.category_description
+  != @catalogue_section.body
+%table#products  
+  - 0.upto(@catalogue_section.products.count/4) do |ind|
+    - index = ind * 4
+    != '<tr>'
+    - if @catalogue_section.products[index] != nil  
+      %td
+        %h2= link_to @catalogue_section.products[index].name, catalog_product_path(@catalogue_section, @catalogue_section.products[index])
+    - if @catalogue_section.products[index+1] != nil
+      %td
+        %h2= link_to @catalogue_section.products[index+1].name, catalog_product_path(@catalogue_section, @catalogue_section.products[index+1])
+    - if @catalogue_section.products[index+2] != nil      
+      %td
+        %h2= link_to @catalogue_section.products[index+2].name, catalog_product_path(@catalogue_section, @catalogue_section.products[index+2])    
+    - if @catalogue_section.products[index+3] != nil
+      %td
+        %h2= link_to @catalogue_section.products[index+3].name, catalog_product_path(@catalogue_section, @catalogue_section.products[index+3])    
+    != '</tr><tr>'
+    - if @catalogue_section.products[index] != nil
+      %td
+        = link_to catalog_product_path(@catalogue_section, @catalogue_section.products[index]) do
+          = image_tag(@catalogue_section.products[index].product_images.first.image.thumb, align: "middle", width: "96", alt: "#{@catalogue_section.products[index].name}", border: "0", title: "#{@catalogue_section.products[index].name}") unless @catalogue_section.products[index].product_images.empty?    
+    - if @catalogue_section.products[index+1] != nil
+      %td
+        = link_to catalog_product_path(@catalogue_section, @catalogue_section.products[index+1]) do
+          = image_tag(@catalogue_section.products[index+1].product_images.first.image.thumb, align: "middle", width: "96", alt: "#{@catalogue_section.products[index+1].name}", border: "0", title: "#{@catalogue_section.products[index+1].name}") unless @catalogue_section.products[index+1].product_images.empty?    
+    - if @catalogue_section.products[index+2] != nil
+      %td
+        = link_to catalog_product_path(@catalogue_section, @catalogue_section.products[index+2]) do
+          = image_tag(@catalogue_section.products[index+2].product_images.first.image.thumb, align: "middle", width: "96", alt: "#{@catalogue_section.products[index+2].name}", border: "0", title: "#{@catalogue_section.products[index+2].name}") unless @catalogue_section.products[index+2].product_images.empty?    
+    - if @catalogue_section.products[index+3] != nil
+      %td
+        = link_to catalog_product_path(@catalogue_section, @catalogue_section.products[index+3]) do
+          = image_tag(@catalogue_section.products[index+3].product_images.first.image.thumb, align: "middle", width: "96", alt: "#{@catalogue_section.products[index+3].name}", border: "0", title: "#{@catalogue_section.products[index+3].name}") unless @catalogue_section.products[index+3].product_images.empty?    
+    != '</tr><tr>'
+    - if @catalogue_section.products[index] != nil
+      %td= link_to 'Подробнее...', catalog_product_path(@catalogue_section, @catalogue_section.products[index])
+    - if @catalogue_section.products[index+1] != nil
+      %td= link_to 'Подробнее...', catalog_product_path(@catalogue_section, @catalogue_section.products[index+1])
+    - if @catalogue_section.products[index+2] != nil
+      %td= link_to 'Подробнее...', catalog_product_path(@catalogue_section, @catalogue_section.products[index+2])
+    - if @catalogue_section.products[index+3] != nil  
+      %td= link_to 'Подробнее...', catalog_product_path(@catalogue_section, @catalogue_section.products[index+3])
+    != '</tr><tr>'
+    - if @catalogue_section.products[index] != nil
+      %td!= '<br /> Цена: ' + @catalogue_section.products[index].price.to_s + ' руб.'
+    - if @catalogue_section.products[index+1] != nil
+      %td!= '<br /> Цена: ' + @catalogue_section.products[index+1].price.to_s + ' руб.'
+    - if @catalogue_section.products[index+2] != nil
+      %td!= '<br /> Цена: ' + @catalogue_section.products[index+2].price.to_s + ' руб.'
+    - if @catalogue_section.products[index+3] != nil  
+      %td!= '<br /> Цена: ' + @catalogue_section.products[index+3].price.to_s + ' руб.'
+    != '</tr><tr>'
+    - if !@catalogue_section.products[index].nil? && @catalogue_section.products[index].product_types.first.nil?
+      %td.price
+        = form_for :cart_item, url: add_to_cart_path, method: :post, remote: true do |f|
+          = f.hidden_field :product_id, value: @catalogue_section.products[index].id
+          = f.hidden_field :quantity, value: 1
+          %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[#{index.to_s}].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
+    - if !@catalogue_section.products[index+1].nil? && @catalogue_section.products[index+1].product_types.first.nil?
+      %td.price
+        = form_for :cart_item, url: add_to_cart_path, method: :post, remote: true do |f|
+          = f.hidden_field :product_id, value: @catalogue_section.products[index+1].id
+          = f.hidden_field :quantity, value: 1
+          %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[#{(index+1).to_s}].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
+    - if !@catalogue_section.products[index+2].nil? && @catalogue_section.products[index+2].product_types.first.nil?
+      %td.price
+        = form_for :cart_item, url: add_to_cart_path, method: :post, remote: true do |f|
+          = f.hidden_field :product_id, value: @catalogue_section.products[index+2].id
+          = f.hidden_field :quantity, value: 1
+          %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[#{(index+2).to_s}].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
+    - if !@catalogue_section.products[index+3].nil? && @catalogue_section.products[index+3].product_types.first.nil?
+      %td.price
+        = form_for :cart_item, url: add_to_cart_path, method: :post, remote: true do |f|
+          = f.hidden_field :product_id, value: @catalogue_section.products[index+3].id
+          = f.hidden_field :quantity, value: 1
+          %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[#{(index+3).to_s}].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
+    != '</tr>'

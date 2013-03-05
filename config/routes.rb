@@ -9,8 +9,8 @@ InitialRelease::Application.routes.draw do
 
   post '/cart/add_to_cart' => "cart#add_to_cart", as: 'add_to_cart'
   
-  get '/cart/conversion/:product/:quantity' => 'cart#conversion', as: 'cart_conversion'
-  delete '/cart/destroy_cart_item/:product' => 'cart#destroy_cart_item', as: 'destroy_cart_item'
+  get '/cart/conversion/:product/(:product_type)/:quantity' => 'cart#conversion', as: 'cart_conversion'
+  delete '/cart/destroy_cart_item/:product/(:product_type)' => 'cart#destroy_cart_item', as: 'destroy_cart_item'
   get '/cart' => "cart#index", as: 'cart'
 
   resources :news
