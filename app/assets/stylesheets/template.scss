@@ -1,4 +1,6 @@
 @import 'compass/css3/border-radius';
+@import "compass/css3/box-shadow";
+@import "compass/css3/transition";
 
 html{
   background: #429ffc url("bg_html.jpg") repeat-x center top;
@@ -317,7 +319,7 @@ div.list-footer{float:right;}
     width: 100%;
 }
 #tienda_checkout_pane .left30 {
-    width: 180px;
+  width: 180px;
   padding:0px;
   margin:0px;
 }
@@ -371,3 +373,58 @@ table#products {
     text-indent: 0;
   }
 }
+
+.CartItems span a, .CartTotal a
+  {
+    color: #2182E1;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover
+      {
+        color: #f0770e;//darken(#f79a05, 5%);
+      }
+
+    .small 
+      { 
+        display: inline-block; 
+        text-transform: none;
+      }
+  }
+
+.promo 
+  {
+    display: block;
+    color: white;
+    text-decoration: none;
+    @include border-radius(20px);
+    border: 2px solid #cae7ee;
+    padding: 20px 10px;
+    margin-bottom: 20px;
+    @include box-shadow(darken(#cae7ee, 50%) 3px 3px 10px);
+    //background-color: ;
+    background: darken(#a7e9ff,45%) url(/assets/promo.png) center right no-repeat;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+
+    &:hover
+      {
+        color: darken(#f0770e,20%);
+        //color: white;
+        //font-weight: bold;
+        border: 2px solid #f0770e;
+        //text-decoration: underline;
+        padding-left: 15px;
+        @include box-shadow(darken(#f0770e, 10%) 3px 3px 10px);
+        background: darken(#a7e9ff,45%) url(/assets/promo.png) center right no-repeat;
+        background-position-x: 99%;
+        //@include single-transition(color, 0.5s, ease-in-out, 0);
+        @include transition-property("color, padding-left, background, border, box-shadow");
+        @include transition-duration("0.5s, 0.5s, 0.5s, 0.5s, 0.5s");
+        @include transition-timing-function("ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out");
+        
+      }
+  }

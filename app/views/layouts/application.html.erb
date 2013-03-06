@@ -62,6 +62,12 @@
 				</div>
 			</div>
 			<div class="right">
+        <%- if @article && @article.title == 'Главная страница' %>
+          <%- @promo = News.last %>
+          <%= link_to news_path(@promo), class: "promo" do %>
+            <%= @promo.title %>
+          <% end %>
+        <% end %>
         <%= yield %>
         <span class="article_separator">&nbsp;</span>
 			</div>

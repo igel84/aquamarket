@@ -1,12 +1,11 @@
 %span.CartItems
   %span.qty
-  Товары в корзине:
-  = @cart.quantity.to_s
-  шт.
-%br/
-%br/
-%span.CartTotal
-  На сумму:
-  %span
-    = @cart.price.to_s
-    руб.
+    = link_to cart_path do
+      Товары в корзине:
+      = @cart.quantity.to_s
+      .small шт.
+      %br/
+      %br/
+      На сумму:
+      = @cart.price.to_s
+      .small руб.
