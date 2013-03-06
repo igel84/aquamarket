@@ -8,50 +8,48 @@
   = link_to @product.catalogue_section.name, catalog_path(@product.catalogue_section)
   \/
   = @product.name
-#tienda.products.view
-  #tienda_product
-    #tienda_product_header
-      %h1= @product.name
-    .product_image{style: 'float:left'}
-      - unless @product.product_images.empty? 
-        = link_to image_tag(@product.product_images.first.image.small, alt: @product.name, align: "middle", border: "0", title: @product.name), @product.product_images.first.image.url, title: @product.name, class: 'fancybox'
-        -#= link_to @product.product_images.first.image.medium.url, class: 'modal fancybox', :rel => "{handler:'image'}" do
-        -#  = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}") unless @product.product_images.empty? 
-    #product_description{style: 'margin-left:250px;'}
-      != @product.description      
-      - if @product.product_types == []
-        #product_buy_4.product_buy
-          = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
-            / base price
-            %span#product_price_4.product_price
-              %span Цена:
-              = @product.price
-              руб.
-              / For UE States, we should let the admin choose to show (+19% vat) and (link to the shipping rates)
-            / Add to cart button
-            #add_to_cart_4.add_to_cart
-              = f.hidden_field :product_id, value: @product.id
-              = f.hidden_field :quantity, value: 1
-              %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[0].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
-- if @product.product_types != []
-  .clear{style:'clear:both'}
-  %br/
-  - @product.product_types.each_with_index do |type, index|
-    -# type.product_type_images.each do |image|
-    -#  = image_tag(image.type_image.thumb)
-    %table#product_types{width:'100%'}
-      %tr
-        %td{width:'100px'}
-          = link_to image_tag(type.product_type_images.first.type_image.box, align: "left", border: "0"), type.product_type_images.first.type_image.url, class: 'fancybox' if type.product_type_images != []
-        %td{align:'left', width:'200px'}= type.name
-        %td &nbsp;
-        %td{align:'middle', width:'150px'}
+%h1= @product.name
+.product_image
+  - unless @product.product_images.empty? 
+    = link_to image_tag(@product.product_images.first.image.thumb, alt: @product.name, align: "middle", border: "0", title: @product.name), @product.product_images.first.image.url, title: @product.name, class: 'fancybox'
+    -#= link_to @product.product_images.first.image.medium.url, class: 'modal fancybox', :rel => "{handler:'image'}" do
+    -#  = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}") unless @product.product_images.empty? 
+.product_description
+  != @product.description      
+  - if @product.product_types == []
+    .product_buy
+      = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
+        / base price
+        %span#product_price_4.product_price
           %span Цена:
+          = @product.price
+          руб.
+          / For UE States, we should let the admin choose to show (+19% vat) and (link to the shipping rates)
+        / Add to cart button
+        .add_to_cart
+          = f.hidden_field :product_id, value: @product.id
+          = f.hidden_field :quantity, value: 1
+          = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[0].submit();return false;", title: "купить " + @product.name + " в воронеже белгороде лисках россоши борисоглебске"
+- if @product.product_types != []
+  .clear
+  %br/
+  %table#product_types.product_types{width:'100%'}
+    - @product.product_types.each_with_index do |type, index|
+      -# type.product_type_images.each do |image|
+      -#  = image_tag(image.type_image.thumb)    
+      %tr
+        %td.type_image
+          = link_to image_tag(type.product_type_images.first.type_image.box, align: "middle", border: "0"), type.product_type_images.first.type_image.url, title: type.full_name, class: 'fancybox' if type.product_type_images != []
+        %td &nbsp;
+        %td.name= type.name
+        %td &nbsp;
+        %td.type_price
+          Цена:
           = type.price.round
           руб.
-        %td{align:'middle', width:'150px'}
+        %td.type_addcart
           = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
             = f.hidden_field :product_id, value: @product.id
             = f.hidden_field :product_type_id, value: type.id
             = f.hidden_field :quantity, value: 1
-            %img.addcart{:alt => "Add to Cart", :onclick => "document.forms[#{index}].submit();", :onmouseout => "src='/assets/addcart.png'", :onmouseover => "src='/assets/addcart_h.png'", :src => "/assets/addcart.png"}/
+            = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[#{index}].submit();return false;", title: "купить " + type.full_name + " в воронеже белгороде лисках россоши борисоглебске"

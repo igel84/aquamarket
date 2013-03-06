@@ -24,4 +24,12 @@ class Product < ActiveRecord::Base
     ProductAttribute.find(product_attributes.uniq)
   end
   
+  def full_name
+    if product_types.first
+      name + ' - ' + product_types.first.name
+    else
+      name
+    end
+  end
+
 end

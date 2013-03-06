@@ -35,7 +35,7 @@
     <ul class="menu">
       <%- MenuItem.find_by_name('top').try(:children).try(:each_with_index) do |menu, index| %>
         <li class="item<%= index + 1 %>">
-          <%= link_to menu.url do %>
+          <%= link_to menu.url, title: menu.name do %>
             <span><%= menu.name %></span>
           <% end %>
         </li>
@@ -46,11 +46,11 @@
 					<div class="left_in">
             <%- MenuItem.find_by_name('menu').try(:children).order('lft').try(:each) do |menu| %>
 							<div class="moduletable">
-                <h3 style="margin-bottom:20px;cursor:pointer !important;" class="menu_nav"><%= menu.name %></h3>
+                <h3 class="menu_nav"><%= menu.name %></h3>
                 <ul class="menu_left">
                   <%- menu.children.each do |item| %>
                     <li class="item27">
-                      <%= link_to item.url do %>
+                      <%= link_to item.url, title: item.name do %>
                         <span><%= item.name %></span>
                       <% end %>
                     </li>
@@ -64,7 +64,7 @@
 			<div class="right">
         <%- if @article && @article.title == 'Главная страница' %>
           <%- @promo = News.last %>
-          <%= link_to news_path(@promo), class: "promo" do %>
+          <%= link_to news_path(@promo), title: 'акция "авамаркет" в воронеже', class: "promo" do %>
             <%= @promo.title %>
           <% end %>
         <% end %>
