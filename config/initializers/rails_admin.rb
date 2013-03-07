@@ -90,6 +90,7 @@ RailsAdmin.config do |config|
 
     #configure :product_attributes, :enum
     configure :catalogue_section, :belongs_to_association
+    configure :brand, :belongs_to_association
     configure :id, :integer     
     configure :name, :string
     #configure :preview, :text
@@ -108,6 +109,7 @@ RailsAdmin.config do |config|
     show do; end
     edit do
       field :catalogue_section
+      field :brand
       field :name do
         length do
           255
@@ -129,6 +131,50 @@ RailsAdmin.config do |config|
       field :product_types
       field :product_images
       #field :product_attributes      
+    end
+    export do; end
+  end
+
+  config.model 'Brand' do    
+    configure :products, :has_many_association
+    configure :id, :integer     
+    configure :name, :string
+    configure :url, :string
+    configure :keywords, :string
+    configure :info, :text
+    configure :logo, :carrierwave
+    configure :created_at, :datetime 
+    configure :updated_at, :datetime 
+    list do
+      field :name      
+      field :logo
+      field :info
+      #field :product_images
+    end
+    show do; end
+    edit do
+      field :logo
+      field :name do
+        length do
+          255
+        end
+      end
+      field :keywords do
+        length do
+          255
+        end
+      end
+      field :url do
+        length do
+          255
+        end
+      end
+      field :info do
+        ckeditor do 
+          true
+        end
+      end
+      field :products
     end
     export do; end
   end

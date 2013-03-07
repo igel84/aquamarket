@@ -1,17 +1,19 @@
 - content_for :head do
-  %title= @product.catalogue_section.name + ' - ' + @product.name
-  %meta{name:"keywords", content:"#{@product.name} в воронеж белгород лиски россошь борисоглебск"}
-  %meta{name:"description", content:"#{@product.name} в воронеж белгород лиски россошь борисоглебск"}
+  %title= @product.catalogue_section.name + ' - ' + @product.name_with_brand
+  %meta{name:"keywords", content:"#{@product.name_with_brand} в воронеж белгород лиски россошь борисоглебск"}
+  %meta{name:"description", content:"#{@product.name_with_brand} в воронеж белгород лиски россошь борисоглебск"}
 %p
-  = link_to 'Каталог', catalogs_path
+  = link_to 'Каталог', catalogs_path, title: 'вернуться в общий каталог продукции водоснабжения и водоочистки'
   \/
-  = link_to @product.catalogue_section.name, catalog_path(@product.catalogue_section)
+  = link_to @product.catalogue_section.name, catalog_path(@product.catalogue_section), title: 'вернуться в ' + @product.catalogue_section.name
   \/
   = @product.name
-%h1= @product.name
+%h1
+  = link_to @product.brand.name, brand_path(@product.brand), title: "подробнее о #{@product.brand.name}" if @product.brand
+  = @product.name
 .product_image
   - unless @product.product_images.empty? 
-    = link_to image_tag(@product.product_images.first.image.thumb, alt: @product.name, align: "middle", border: "0", title: @product.name), @product.product_images.first.image.url, title: @product.name, class: 'fancybox'
+    = link_to image_tag(@product.product_images.first.image.thumb, alt: "изображение #{@product.name_with_brand}", align: "middle", border: "0"), @product.product_images.first.image.url, title: @product.name_with_brand, class: 'fancybox'
     -#= link_to @product.product_images.first.image.medium.url, class: 'modal fancybox', :rel => "{handler:'image'}" do
     -#  = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}") unless @product.product_images.empty? 
 .product_description
@@ -29,7 +31,7 @@
         .add_to_cart
           = f.hidden_field :product_id, value: @product.id
           = f.hidden_field :quantity, value: 1
-          = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[0].submit();return false;", title: "купить " + @product.name + " в воронеже белгороде лисках россоши борисоглебске"
+          = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[0].submit();return false;", title: "купить " + @product.name_with_brand + " в воронеже белгороде лисках россоши борисоглебске"
 - if @product.product_types != []
   .clear
   %br/

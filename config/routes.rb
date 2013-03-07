@@ -19,9 +19,9 @@ InitialRelease::Application.routes.draw do
       get 'print'
     end
   end
-  
+
   root to: 'articles#show'#, id: Article.find_by_title('root').id
-  resources :articles
+  resources :articles, :brands
   resources :catalogs do
     resources :products
   end

@@ -1,10 +1,12 @@
 #encoding: utf-8
 class Product < ActiveRecord::Base
 
-  attr_accessible :product_id, :catalogue_section_id, :name, :preview, :description, :price, :discount_price, :quantity, :product_images_attributes, :product_attributes, :product_types_attributes
+  attr_accessible :product_id, :catalogue_section_id, :name, :preview, :description, :price, :discount_price, :quantity, :product_images_attributes, :product_attributes, :product_types_attributes, :brand_id
   
   has_many :product_images, dependent: :destroy
   belongs_to :catalogue_section
+
+  belongs_to :brand
 
   has_many :order_items
   
@@ -24,6 +26,14 @@ class Product < ActiveRecord::Base
     ProductAttribute.find(product_attributes.uniq)
   end
   
+  def name_with_brand
+    if brand
+      brand.name + ' - ' + name
+    else
+      name
+    end
+  end
+
   def full_name
     if product_types.first
       name + ' - ' + product_types.first.name

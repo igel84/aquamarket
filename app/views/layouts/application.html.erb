@@ -45,7 +45,11 @@
 				<div class="left">
 					<div class="left_in">
             <%- MenuItem.find_by_name('menu').try(:children).order('lft').try(:each) do |menu| %>
-							<div class="moduletable">
+              <%- if menu.children == [] %>
+                <%= link_to menu.url do %>
+                  <h3><%= menu.name %></h3>
+                <% end %>
+              <%- else %>
                 <h3 class="menu_nav"><%= menu.name %></h3>
                 <ul class="menu_left">
                   <%- menu.children.each do |item| %>
@@ -56,7 +60,7 @@
                     </li>
                   <% end %>
                 </ul>		
-              </div>
+              <% end %>
             <% end %>
           </div>
 				</div>

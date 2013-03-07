@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305110900) do
+ActiveRecord::Schema.define(:version => 20130307073013) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20130305110900) do
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "brands", :force => true do |t|
+    t.string   "name"
+    t.text     "info"
+    t.string   "logo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "url"
+    t.string   "keywords"
   end
 
   create_table "catalogue_sections", :force => true do |t|
@@ -141,6 +151,7 @@ ActiveRecord::Schema.define(:version => 20130305110900) do
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
     t.text     "product_attributes"
+    t.integer  "brand_id"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

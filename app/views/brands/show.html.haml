@@ -1,0 +1,10 @@
+- content_for :head do
+  %title= @brand.name  
+  %meta{name:"keywords", content:"#{@brand.keywords} в воронеж белгород лиски россошь борисоглебск"}
+  %meta{name:"description", content:"#{@brand.keywords} в воронеж белгород лиски россошь борисоглебск"}
+%h1= @brand.name
+= image_tag @brand.logo
+!= @brand.info
+%p
+  %strong Сайт компании:
+  = link_to @brand.url, @brand.url, target: '_blank', title: 'ссылка на сайт компании ' + @brand.name
