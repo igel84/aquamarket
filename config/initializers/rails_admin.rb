@@ -20,18 +20,21 @@ RailsAdmin.config do |config|
 
   config.model 'Article' do
       configure :id, :integer 
-      configure :name, :string      
+      configure :name, :string
+      configure :keywords, :string      
       configure :title, :string
       configure :body, :text
       configure :created_at, :datetime 
       configure :updated_at, :datetime 
       list do
-        field :title        
+        field :title 
+        field :keywords       
       end
       show do; end
       edit do
         field :name
         field :title
+        field :keywords
         field :body do
           ckeditor do 
             true
@@ -66,14 +69,17 @@ RailsAdmin.config do |config|
       configure :products, :has_many_association
       configure :id, :integer 
       configure :name, :string
+      configure :keywords, :string
       configure :created_at, :datetime 
       configure :updated_at, :datetime 
       list do
-        field :name        
+        field :name
+        field :keywords        
       end
       show do; end
       edit do
-        field :name        
+        field :name
+        field :keywords        
         field :products
         field :body do
         ckeditor do 
@@ -148,7 +154,7 @@ RailsAdmin.config do |config|
     list do
       field :name      
       field :logo
-      field :info
+      field :keywords
       #field :product_images
     end
     show do; end
@@ -174,7 +180,11 @@ RailsAdmin.config do |config|
           true
         end
       end
-      field :products
+      
+      field :products do
+        orderable true
+        searchable :name
+      end
     end
     export do; end
   end

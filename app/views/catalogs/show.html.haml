@@ -1,7 +1,7 @@
 - content_for :head do
   %title= @catalogue_section.name
-  %meta{name:"keywords", content:"#{@catalogue_section.name} в воронеж белгород лиски россошь борисоглебск"}
-  %meta{name:"description", content:"#{@catalogue_section.name} в воронеж белгород лиски россошь борисоглебск"}
+  %meta{name:"keywords", content:"#{@catalogue_section.keywords == nil ? @catalogue_section.name : @catalogue_section.keywords}"}
+  %meta{name:"description", content:"#{@catalogue_section.keywords == nil ? @catalogue_section.name : @catalogue_section.keywords}"}
 %h1= @catalogue_section.name
 .category_description
   != @catalogue_section.body

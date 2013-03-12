@@ -5,5 +5,4 @@ class Brand < ActiveRecord::Base
   accepts_nested_attributes_for :products, allow_destroy: true
   
   mount_uploader :logo, BrandUploader
-
 end

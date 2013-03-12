@@ -1,6 +1,6 @@
 #encoding: utf-8
 class CatalogueSection < ActiveRecord::Base
-  attr_accessible :name, :products_attributes, :body
+  attr_accessible :name, :products_attributes, :body, :keywords
   
   has_many :products, dependent: :destroy
   
