@@ -1,7 +1,7 @@
 #encoding: utf-8
 RailsAdmin.config do |config|
-
-  config.yell_for_non_accessible_fields = false
+  #I18n.default_locale = :ru
+  #config.yell_for_non_accessible_fields = false
   #config.authorize_with :cancan
   
   config.authorize_with{
@@ -10,12 +10,36 @@ RailsAdmin.config do |config|
 
   config.main_app_name = ['Aquamarket', 'Admin']
   config.current_user_method { current_user } # auto-generated
-  config.audit_with :history, 'User'
+  config.actions do
+    # root actions
+    dashboard                     # mandatory
+    # collection actions
+    index                         # mandatory
+    new
+    #export
+    #history_index
+    bulk_delete
+    #member_actions
+    show
+    edit
+    delete
+    #history_show
+    show_in_app
+
+    # Add the nestable action for each model
+    nestable do
+      visible do
+        %w(Product).include? bindings[:abstract_model].model_name
+      end
+    end
+  end
+  #config.audit_with :history, 'User'
   config.default_items_per_page = 50
   config.excluded_models = ['Role', 'RoleUser', 'GritterNotice', 'Ckeditor::Asset', 'Ckeditor::AttachmentFile', 'Ckeditor::Picture']
 
 #  config.included_models = ['Article', 'User']
 
+  
   [:email, :locale].each{ |attr| config.label_methods << attr }
 
   config.model 'Article' do
@@ -90,7 +114,9 @@ RailsAdmin.config do |config|
       export do; end
   end
   
-  config.model 'Product' do    
+  config.model 'Product' do 
+    nestable_tree({ position_field: :position, max_depth: 3 })
+
     configure :product_images, :has_many_association
     configure :product_types, :has_many_association
 

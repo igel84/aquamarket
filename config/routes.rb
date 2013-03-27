@@ -13,6 +13,8 @@ InitialRelease::Application.routes.draw do
   delete '/cart/destroy_cart_item/:product/(:product_type)' => 'cart#destroy_cart_item', as: 'destroy_cart_item'
   get '/cart' => "cart#index", as: 'cart'
 
+  post '/find_product' => 'products#find_product'
+
   resources :news
   resources :orders do
     member do

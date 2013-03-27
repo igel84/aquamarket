@@ -11,6 +11,9 @@ gem 'cancan'
 gem 'gritter_notices'
 gem 'awesome_nested_set'
 gem 'haml-rails'
+
+gem 'ancestry'
+gem 'rails_admin_nestable', '0.0.9'
 #gem 'yaml_db', github: 'lostapathy/yaml_db'
 #gem 'yaml_db', git:'git://github.com/lostapathy/yaml_db.git'
 

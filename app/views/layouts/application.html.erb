@@ -12,6 +12,7 @@
   <script>window["_GOOG_TRANS_EXT_VER"] = "1";</script>
 
 <%= stylesheet_link_tag 'application' %>
+<%= javascript_include_tag '/assets/jquery1.8.2.js' %>
 <%= javascript_include_tag 'application' %>
 <%- if content_for?(:head) %>
 <%= yield(:head) %>
@@ -44,6 +45,12 @@
 			<div class="wrap_left">
 				<div class="left">
 					<div class="left_in">
+            <form action="/find_product" class="find_product" id="find_product" method="post">
+              <div>
+                <input type="search" value="Поиск по каталогу" onBlur="if(this.value=='') this.value='Поиск по каталогу'" onFocus="if(this.value =='Поиск по каталогу' ) this.value=''" name="product_name" />
+                <a href="#" onclick="document.getElementById('find_product').submit();return false;">&nbsp;</a>
+              </div>
+            </form>
             <%- MenuItem.find_by_name('menu').try(:children).order('lft').try(:each) do |menu| %>
               <%- if menu.children == [] %>
                 <%= link_to menu.url do %>
@@ -87,13 +94,13 @@
 	</div>
 <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter19425016 = new Ya.Metrika({id:19425016, webvisor:true, clickmap:true, trackLinks:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/19425016" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
 <script type="text/javascript">
-$(document).ready(function() {
-  $('.menu_left').hide();
+$(document).ready(function() {  
   $(".menu_nav").toggle(function(){
     $(this).next().slideDown("slow");
   }, function(){
     $(this).next().slideUp("slow");
   });
+  $('.menu_left').hide();
 });
 </script>
 </body></html>

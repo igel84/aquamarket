@@ -1,0 +1,38 @@
+- content_for :head do
+  %title Поиск товаров
+  %meta{name:"keywords", content:"поиск фильтров кулеров для воды в воронеже"}
+  %meta{name:"description", content:"поиск фильтров кулеров воды в воронеже"}
+%h1= @products == [] ? 'К сожалению, ничего не найдено' : 'Найдены следующие товары:'
+%table#products
+  - @products.in_groups_of(4, nil) do |products|
+    %tr
+      - products.each_with_index do |product, index|
+        - unless product.nil?
+          %td
+            %h2= link_to product.name_with_brand, catalog_product_path(product.catalogue_section, product), title: product.name_with_brand
+    %tr
+      - products.each_with_index do |product, index|
+        - unless product.nil?
+          %td.image
+            = link_to catalog_product_path(product.catalogue_section, product), title: "изображения и описание #{product.name_with_brand}" do
+              = image_tag(product.product_images.first.image.thumb, align: "middle", width: "96", alt: "изображение #{product.name_with_brand}", border: "0") unless product.product_images.empty?
+    %tr
+      - products.each_with_index do |product, index|
+        - unless product.nil?
+          %td= link_to 'Подробнее...', catalog_product_path(product.catalogue_section, product), title: 'подробнее о ' + product.name_with_brand
+    %tr
+      - products.each_with_index do |product, index|
+        - unless product.nil?
+          %td.price= 'Цена: ' + product.price.to_s + ' руб.'
+    %tr
+      - products.each_with_index do |product, index|
+        - unless product.nil? 
+          - unless product.product_types.first
+            %td.addcart
+              = form_for :cart_item, url: add_to_cart_path, method: :post, remote: true do |f|              
+                = f.hidden_field :product_id, value: product.id
+                = f.hidden_field :quantity, value: 1
+                = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[#{index.to_s}].submit();return false;", title: "купить " + product.name_with_brand + " в воронеже белгороде лисках россоши борисоглебске"
+          - else
+            %td.addcart
+              = link_to 'Купить', "#{catalog_product_path(product.catalogue_section, product)}#product_types", class: 'submit', title: "купить " + product.full_name + " в воронеже белгороде лисках россоши борисоглебске"

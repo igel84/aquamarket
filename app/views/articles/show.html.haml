@@ -2,5 +2,5 @@
   %title= @article.title  
   %meta{name:"keywords", content:"#{@article.keywords == nil ? @article.title : @article.keywords}"}
   %meta{name:"description", content:"#{@article.keywords == nil ? @article.title : @article.keywords}"}
-%h1= @article.title
+%h1!= @article.title
 != @article.body

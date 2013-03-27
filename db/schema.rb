@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311102801) do
+ActiveRecord::Schema.define(:version => 20130314064708) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -147,14 +147,18 @@ ActiveRecord::Schema.define(:version => 20130311102801) do
     t.text     "preview"
     t.text     "description"
     t.integer  "catalogue_section_id"
-    t.decimal  "price",                :precision => 10, :scale => 0
-    t.decimal  "discount_price",       :precision => 10, :scale => 0
+    t.integer  "price",                :limit => 10
+    t.integer  "discount_price",       :limit => 10
     t.integer  "quantity"
-    t.datetime "created_at",                                          :null => false
-    t.datetime "updated_at",                                          :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.text     "product_attributes"
     t.integer  "brand_id"
+    t.string   "ancestry"
+    t.integer  "position",                           :default => 10000
   end
+
+  add_index "products", ["ancestry"], :name => "index_products_on_ancestry"
 
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"

@@ -1,7 +1,9 @@
 #encoding: utf-8
 class Product < ActiveRecord::Base
 
-  attr_accessible :product_id, :catalogue_section_id, :name, :preview, :description, :price, :discount_price, :quantity, :product_images_attributes, :product_attributes, :product_types_attributes, :brand_id
+  has_ancestry
+
+  attr_accessible :product_id, :catalogue_section_id, :name, :preview, :description, :price, :discount_price, :quantity, :product_images_attributes, :product_attributes, :product_types_attributes, :brand_id, :position
   
   has_many :product_images, dependent: :destroy
   belongs_to :catalogue_section
@@ -16,6 +18,8 @@ class Product < ActiveRecord::Base
   
   has_many :product_types, dependent: :destroy
   accepts_nested_attributes_for :product_types, allow_destroy: true  
+
+  default_scope order('position')
 
   def product_attributes_enum
     ProductAttribute.all.collect { |attr| ["#{attr.name}: #{attr.value}", attr.id] }

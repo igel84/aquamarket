@@ -469,7 +469,23 @@ table#products {
 h1 
   {
     text-indent:0px;
-    margin-bottom:30px;
+    margin-bottom:30px;    
+
+    span 
+      { 
+        display: inline-block;
+        line-height: 25px;        
+        //padding: 10px 0; 
+      }
+    i
+      {
+        display: inline-block;
+        vertical-align: middle;
+        height: 30px;
+        width: 30px;
+        margin: 0 20px 0 200px;
+        &.phone { background: url(/assets/iphone.png) right center no-repeat; }
+      }
   }
 
 .product_description
@@ -548,3 +564,49 @@ table.product_types
   }
 
 .clear {clear:both;}
+
+.find_product
+  {
+    text-align: center;
+    div
+      {
+        width: 250px;
+        margin: 20px;
+        border: 2px solid #2182E1;
+        @include border-radius(8px);
+        color: #7a7a7a;
+        text-align: left;
+        padding: 0 0 0 5px;
+      }
+    input
+      {
+        width: 200px;
+        text-align: left;
+        border: none;
+        background: url("left_center.png") repeat-y 0px 0px;
+        color: #7a7a7a;
+        padding: 5px;
+
+        &:focus { border: none; }
+      }
+    a 
+      {
+        display: inline-block;
+        width: 30px;
+        height: 24px;
+        margin: 3px 0 3px 0;        
+        text-decoration: none;
+        //position: absolute;
+        //right: 0;
+        //top: 0;
+        border-left: 1px solid #BDBDBD;
+        color: #006AD4;
+        outline: none;
+        background: url(/assets/search.png) 12px 3px no-repeat;
+
+        &:hover
+          {
+            background: url(/assets/search.png) 12px -45px no-repeat;
+          }
+      }
+  }
