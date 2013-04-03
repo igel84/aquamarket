@@ -11,27 +11,24 @@
 %h1
   = link_to @product.brand.name, brand_path(@product.brand), title: "подробнее о #{@product.brand.name}" if @product.brand
   = @product.name
-.product_image
-  - unless @product.product_images.empty? 
-    = link_to image_tag(@product.product_images.first.image.thumb, alt: "изображение #{@product.name_with_brand}", align: "middle", border: "0"), @product.product_images.first.image.url, title: @product.name_with_brand, class: 'fancybox'
-    -#= link_to @product.product_images.first.image.medium.url, class: 'modal fancybox', :rel => "{handler:'image'}" do
-    -#  = image_tag(@product.product_images.first.image.thumb, :align => "middle", :alt => "#{@product.name}", :border => "0", :title => "#{@product.name}") unless @product.product_images.empty? 
+.product_image{style:'position:relative'}
+  = product_image(@product)
 .product_description
-  != @product.description      
+  = product_description(@product)  
   - if @product.product_types == []
     .product_buy
       = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
         / base price
         %span#product_price_4.product_price
           %span Цена:
-          = @product.price
+          = @product.full_price
           руб.
           / For UE States, we should let the admin choose to show (+19% vat) and (link to the shipping rates)
         / Add to cart button
         .add_to_cart
           = f.hidden_field :product_id, value: @product.id
           = f.hidden_field :quantity, value: 1
-          = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[0].submit();return false;", title: "купить " + @product.name_with_brand + " в воронеже белгороде лисках россоши борисоглебске"
+          = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[1].submit();return false;", title: "купить " + @product.name_with_brand + " в воронеже белгороде лисках россоши борисоглебске"
 - if @product.product_types != []
   .clear
   %br/
@@ -54,4 +51,4 @@
             = f.hidden_field :product_id, value: @product.id
             = f.hidden_field :product_type_id, value: type.id
             = f.hidden_field :quantity, value: 1
-            = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[#{index}].submit();return false;", title: "купить " + type.full_name + " в воронеже белгороде лисках россоши борисоглебске"
+            = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[#{index + 1}].submit();return false;", title: "купить " + type.full_name + " в воронеже белгороде лисках россоши борисоглебске"

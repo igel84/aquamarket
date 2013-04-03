@@ -19,11 +19,13 @@
     %tr
       - products.each_with_index do |product, index|
         - unless product.nil?
-          %td= link_to 'Подробнее...', catalog_product_path(product.catalogue_section, product), title: 'подробнее о ' + product.name_with_brand
+          %td          
+            = link_to catalog_product_path(product.catalogue_section, product), title: 'подробнее о ' + product.name_with_brand, style:'position:relative !important' do
+              = promotion(product)
     %tr
       - products.each_with_index do |product, index|
         - unless product.nil?
-          %td.price= 'Цена: ' + product.price.to_s + ' руб.'
+          %td.price= 'Цена: ' + product.full_price.to_s + ' руб.'
     %tr
       - products.each_with_index do |product, index|
         - unless product.nil? 
@@ -32,7 +34,7 @@
               = form_for :cart_item, url: add_to_cart_path, method: :post, remote: true do |f|              
                 = f.hidden_field :product_id, value: product.id
                 = f.hidden_field :quantity, value: 1
-                = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[#{index.to_s}].submit();return false;", title: "купить " + product.name_with_brand + " в воронеже белгороде лисках россоши борисоглебске"
+                = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[#{(index + 1).to_s}].submit();return false;", title: "купить " + product.name_with_brand + " в воронеже белгороде лисках россоши борисоглебске"
           - else
             %td.addcart
               = link_to 'Купить', "#{catalog_product_path(product.catalogue_section, product)}#product_types", class: 'submit', title: "купить " + product.full_name + " в воронеже белгороде лисках россоши борисоглебске"

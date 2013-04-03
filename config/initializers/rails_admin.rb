@@ -120,6 +120,8 @@ RailsAdmin.config do |config|
     configure :product_images, :has_many_association
     configure :product_types, :has_many_association
 
+    configure :promotions, :has_many_association
+
     #configure :product_attributes, :enum
     configure :catalogue_section, :belongs_to_association
     configure :brand, :belongs_to_association
@@ -162,7 +164,32 @@ RailsAdmin.config do |config|
       end
       field :product_types
       field :product_images
+      field :promotions
       #field :product_attributes      
+    end
+    export do; end
+  end
+
+  config.model 'Promotion' do    
+    configure :product, :belongs_to_association
+    configure :id, :integer   
+    configure :kind, :string
+    configure :info, :string
+    configure :value, :integer   
+    configure :start_at, :datetime
+    configure :finish_at, :datetime
+    show do; end
+    list do; end
+    show do; end
+    edit do
+      field :kind do
+        partial "promotion_kind_form"
+      end
+      field :product
+      field :value
+      field :info
+      field :start_at
+      field :finish_at
     end
     export do; end
   end

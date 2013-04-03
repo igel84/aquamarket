@@ -1,3 +1,4 @@
+#encoding: utf-8
 module ApplicationHelper
 
   def menu
@@ -6,6 +7,17 @@ module ApplicationHelper
     content_tag( :ul, raw(@menu))
   end
   
+  def promotion(product)
+    str = ''
+    if product.have_promotion? 
+      str = content_tag :div, style:'position:absolute;top:-60px;left:-10px' do
+        image_tag '/assets/akciya.png'
+      end
+    end
+    str += 'Подробнее...'
+    raw(str)
+  end  
+
   private
 
     def menu_item(item)

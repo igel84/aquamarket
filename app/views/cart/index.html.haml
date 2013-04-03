@@ -21,7 +21,7 @@
                 = link_to item.name, catalog_product_path(Product.find(item.product.id).catalogue_section, item.product)
                 %br/
                 Цена:
-                = item.product.price
+                = item.product.full_price
                 руб.
               %td{align: 'center', :style => "width: 30px;"}
                 = link_to cart_conversion_path(product: item.product, product_type: item.product_type, quantity: 'sub'), remote: true do

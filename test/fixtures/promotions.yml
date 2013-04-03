@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  product_id: 1
+  type: 
+  value: 1
+  start_at: 2013-04-03 13:09:16
+  finish_at: 2013-04-03 13:09:16
+
+two:
+  product_id: 1
+  type: 
+  value: 1
+  start_at: 2013-04-03 13:09:16
+  finish_at: 2013-04-03 13:09:16

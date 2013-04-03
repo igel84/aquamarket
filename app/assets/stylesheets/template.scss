@@ -565,6 +565,10 @@ table.product_types
 
 .clear {clear:both;}
 
+form.find_product > div:first-child {
+  display: none !important;
+}
+
 .find_product
   {
     text-align: center;

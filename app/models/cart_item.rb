@@ -20,7 +20,7 @@ class CartItem
   end
 
   def price
-    (@product.discount_price || @product.price) * @quantity
+    @product.full_price * @quantity
   end
 
 end
