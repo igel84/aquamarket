@@ -16,7 +16,7 @@ class CartItem
   end
 
   def name
-    @product_type == nil ? @product.name : @product.name + " - " + @product_type.name
+    @product_type == nil ? @product.name_with_brand : @product.name_with_brand + " - " + @product_type.name
   end
 
   def price

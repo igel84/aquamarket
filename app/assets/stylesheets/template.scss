@@ -486,6 +486,11 @@ h1
         margin: 0 20px 0 200px;
         &.phone { background: url(/assets/iphone.png) right center no-repeat; }
       }
+    &.promotion
+      {
+        padding: 10px 0 10px 60px;
+        background: url(/assets/akciya.png) left center no-repeat; 
+      }
   }
 
 .product_description
@@ -493,7 +498,7 @@ h1
     margin-left:180px;    
   }
 
-a.submit 
+a.submit, a.product_info 
   {
     margin: 0 auto;
     border: none;

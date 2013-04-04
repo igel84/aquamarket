@@ -1,5 +1,6 @@
 //= require jquery_ujs
 //= require_tree ./fancybox
+//= require ./alertify/alertify.js
 
 $(document).ready( ->
   $('a.fancybox').fancybox({
@@ -15,4 +16,7 @@ $(document).ready( ->
     prevEffect: 'fade',
     nextEffect: 'fade',
   })
+  $('.submit').click () ->
+    alertify.success("Товар успешно добавлен в корзину");
+    $(this).parent().submit()
 )

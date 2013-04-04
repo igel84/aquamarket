@@ -12,7 +12,10 @@ class CartController < ApplicationController
     else 
       @cart.add_product(@product, ProductType.find(product_type), quantity)
     end    
-    redirect_to :back
+    respond_to do |format|
+      format.js #{ render js: "$('#tiendaUserShoppingCart').html('');" }
+      format.html { redirect_to :back }
+    end
   end
 
   def conversion

@@ -72,14 +72,16 @@
           </div>
 				</div>
 			</div>
-			<div class="right">
+			<div class="right">        
+        <%= yield %>
         <%- if @article && @article.title == 'Главная страница' %>
-          <%- @promo = News.last %>
+          <h1 class='promotion'>Товары по акции</h1>
+          <%= render partial: 'products/products', locals: {products: Product.actual_promotion_products} %>
+          <!--<%- @promo = News.last %>
           <%= link_to news_path(@promo), title: 'акция "авамаркет" в воронеже', class: "promo" do %>
             <%= @promo.title %>
-          <% end %>
+          <% end %>-->
         <% end %>
-        <%= yield %>
         <span class="article_separator">&nbsp;</span>
 			</div>
 			<div class="footer">

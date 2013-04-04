@@ -47,8 +47,8 @@
           = type.price.round
           руб.
         %td.type_addcart
-          = form_for :cart_item, url: add_to_cart_path, method: :post do |f|
+          = form_for :cart_item, url: add_to_cart_path, method: :post, remote: true do |f|
             = f.hidden_field :product_id, value: @product.id
             = f.hidden_field :product_type_id, value: type.id
             = f.hidden_field :quantity, value: 1
-            = link_to 'Купить', '#', class: 'submit', onclick: "document.forms[#{index + 1}].submit();return false;", title: "купить " + type.full_name + " в воронеже белгороде лисках россоши борисоглебске"
+            = link_to 'Купить', '#', class: 'submit', onclick: "return false;", title: "купить " + type.full_name + " в воронеже белгороде лисках россоши борисоглебске"

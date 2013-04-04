@@ -74,4 +74,12 @@ class Product < ActiveRecord::Base
     full_price
   end
 
+  def self.actual_promotion_products
+    products = []
+    Promotion.actuals.each do |promo|
+      products << promo.product
+    end
+    products
+  end
+
 end
